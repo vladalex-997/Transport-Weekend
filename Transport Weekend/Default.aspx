@@ -11,7 +11,7 @@
     <label for="inputId" class="col-form-label fs-5">Login ID:</label>
   </div>
   <div class="col-2">
-    <input type="text" id="inputId" class="form-control fs-5" aria-describedby="idHelpInline" required runat="server">
+    <input type="text" id="inputId" class="form-control fs-5" aria-describedby="idHelpInline" runat="server" required>
   </div>
   <div class="col-3">
     <span id="idHelpInline" class="form-text fs-5">
@@ -25,7 +25,7 @@
     <label for="inputPassword" class="col-form-label fs-5">Password:</label>
   </div>
   <div class="col-2">
-    <input type="password" id="inputPassword" class="form-control fs-5" aria-describedby="passwordHelpInline" required runat="server">
+    <input type="password" id="inputPassword" class="form-control fs-5" aria-describedby="passwordHelpInline" runat="server" required>
   </div>
   <div class="col-3">
     <span id="passwordHelpInline" class="form-text fs-5">

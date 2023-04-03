@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
+using System.Data.SqlClient;
 
 namespace Transport_Weekend
 {
@@ -25,19 +26,80 @@ namespace Transport_Weekend
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-
-            if (inputId.Value == "1")
+            try
             {
-                MsgBox("! your message !", this.Page, this);
-            }
-            else
-            {
-                Response.Redirect("~/Subordonates.aspx");
-            }
+                Response.Cookies["userdata"].Expires = DateTime.Now.AddDays(-1D);
 
+                string UniqueId = "";
+                string UserPassword = "";
+
+                string VerifyId = "";
+                string VerifyPass = "";
+                string VerifyActive = "";
+
+                UniqueId = inputId.Value;
+                UserPassword = inputPassword.Value;
+
+                Database databaseObject = new Database();
+
+                string queryLogin = "SELECT UniqueId,UserPassword,UserStatus from Users where UniqueId=@UniqueId AND UserPassword=@UserPassword";
+                SqlCommand cmdLogin = new SqlCommand(queryLogin, databaseObject.myConnection);
+
+                cmdLogin.Parameters.AddWithValue("@UniqueId", UniqueId);
+                cmdLogin.Parameters.AddWithValue("@UserPassword", UserPassword);
+
+                databaseObject.OpenConnection();
+                SqlDataReader reader = cmdLogin.ExecuteReader();
+                if (reader.HasRows)
+                {
+
+                    while (reader.Read())
+                    {
+                        VerifyId = reader[0].ToString();
+                        VerifyPass = reader[1].ToString();
+                        VerifyActive = reader[2].ToString();
+                    }
+                }
+                reader.Close();
+
+                databaseObject.CloseConnection();
+
+                
+                    if (UniqueId == VerifyId && UserPassword == VerifyPass)
+                    {
+                        if (VerifyActive == "ACTIVE")
+                        {
+                        HttpCookie cooku = new HttpCookie("userdata");
+                        cooku.Expires = DateTime.Now.AddDays(1);
+                        cooku.Value = UniqueId;
+                        Response.Cookies.Add(cooku);
+                        Session["login"] = UniqueId;
+
+                        Response.Redirect("~/Subordinates.aspx");
+                        }
+                        else
+                        {
+                        MsgBox("User is no longer active", this.Page, this);
+                        }
+                       
+                    }
+                    else
+                    {
+                        MsgBox("Incorrect ID or Password", this.Page, this);
+                    }
+               
+
+                
+
+            }
+            catch (Exception ex) 
+            {
+                MsgBox(ex.ToString(), this.Page, this);
+            }
            
 
-            
+
+
         }
     }
 }

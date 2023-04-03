@@ -100,6 +100,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="AddModifALL.aspx" />
+    <Content Include="AddModifSOME.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -122,6 +124,8 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Images\mfi_logotype.jpg" />
+    <Content Include="Logout.aspx" />
+    <Content Include="ReportPage.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -181,13 +185,28 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="Styles\sweetalert.css" />
-    <Content Include="Subordonates.aspx" />
+    <Content Include="Subordinates.aspx" />
+    <Content Include="TemporaryTransport.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddModifALL.aspx.cs">
+      <DependentUpon>AddModifALL.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddModifALL.aspx.designer.cs">
+      <DependentUpon>AddModifALL.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddModifSOME.aspx.cs">
+      <DependentUpon>AddModifSOME.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddModifSOME.aspx.designer.cs">
+      <DependentUpon>AddModifSOME.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -204,6 +223,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Database.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -211,10 +231,26 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GetPrivilage.cs" />
+    <Compile Include="GetUserName.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportPage.aspx.cs">
+      <DependentUpon>ReportPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportPage.aspx.designer.cs">
+      <DependentUpon>ReportPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -229,12 +265,19 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
-    <Compile Include="Subordonates.aspx.cs">
-      <DependentUpon>Subordonates.aspx</DependentUpon>
+    <Compile Include="Subordinates.aspx.cs">
+      <DependentUpon>Subordinates.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Subordonates.aspx.designer.cs">
-      <DependentUpon>Subordonates.aspx</DependentUpon>
+    <Compile Include="Subordinates.aspx.designer.cs">
+      <DependentUpon>Subordinates.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TemporaryTransport.aspx.cs">
+      <DependentUpon>TemporaryTransport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TemporaryTransport.aspx.designer.cs">
+      <DependentUpon>TemporaryTransport.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
