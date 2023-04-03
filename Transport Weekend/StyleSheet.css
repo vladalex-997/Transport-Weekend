@@ -1,0 +1,11 @@
+﻿/*.vline {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    bottom: 150px;
+    margin: 0;
+    border: none;
+    border-right: solid 1px black;
+    z-index: 10;
+}
+*/

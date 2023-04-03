@@ -40,12 +40,12 @@ namespace Transport_Weekend
                     menuLogin.Visible = false;
                     menuSubordinates.Visible = true;
                     menuAddModifALL.Visible = true;
-                    menuAddModidSOME.Visible = false;
+                    menuAddModidSOME.Visible = true;
                     menuTemporaryTransport.Visible = true;
                     menuReportPage.Visible = true;
                     menuLogout.Visible = true;
                 }
-                else if (temprole == "SEFSCHIMB")
+                else if (temprole == "SEF SCHIMB")
                 {
                     menuUserCurrent.Visible = true;
                     textPlace.InnerText = "Bun venit, " + tempUserName;
