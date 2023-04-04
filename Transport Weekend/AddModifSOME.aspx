@@ -16,7 +16,7 @@
 
     <%-- Company --%>
     <div class="row mt-5 mb-4 align-items-center">
-        <div class="col-1 offset-0">
+        <div class="col-2 offset-0">
             <label class="col-form-label fs-5">Company:</label>
         </div>
         <div class="col-2 offset-0">
@@ -32,7 +32,7 @@
             </span>
         </div>
 
-        <div class="col-1 offset-2">
+        <div class="col-2 offset-0">
             <label class="col-form-label fs-5">Company:</label>
         </div>
         <div class="col-2 offset-0">
@@ -56,21 +56,26 @@
             <label for="inputCPNAdd" class="col-form-label fs-5">CNP:</label>
         </div>
 
-        <div class="col-2">
+        <div class="col-2 offset-1">
             <input type="text" id="inputCNPAdd" class="form-control fs-5" aria-describedby="cnpHelpInlineAdd" runat="server" placeholder="Enter CNP">
         </div>
 
-        <div class="col-3">
+        <div class="col-2">
             <span id="cnpHelpInlineAdd" class="form-text fs-5">Enter CNP.
             </span>
         </div>
 
-        <div class="col-1 offset-1">
+        <div class="col-1 offset-0">
             <label for="inputCNPMod" class="col-form-label fs-5">CNP:</label>
         </div>
 
-        <div class="col-2">
+        <div class="col-2 offset-1">
             <input type="text" id="inputCNPMod" class="form-control fs-5" aria-describedby="cnpHelpInlineMod" runat="server" placeholder="Enter CNP">
+        </div>
+
+        <div class="col-2">
+            <span id="cnpHelpInlineMod" class="form-text fs-5">Enter CNP.
+            </span>
         </div>
 
     </div>
@@ -80,18 +85,18 @@
         <div class="col-1 offset-0">
             <label for="inputIdAdd" class="col-form-label fs-5">SAP ID:</label>
         </div>
-        <div class="col-2">
+        <div class="col-2 offset-1">
             <input type="text" id="inputIdAdd" class="form-control fs-5" aria-describedby="idHelpInlineAdd" runat="server" placeholder="Enter SAP ID">
         </div>
-        <div class="col-3">
+        <div class="col-2">
             <span id="idHelpInlineAdd" class="form-text fs-5">Enter Unique ID (Cannot be modified later).
             </span>
         </div>
 
-        <div class="col-1 offset-1">
+        <div class="col-1 offset-0">
             <label for="inputIdMod" class="col-form-label fs-5">SAP ID:</label>
         </div>
-        <div class="col-2">
+        <div class="col-2 offset-1">
             <input type="text" id="inputIdMod" class="form-control fs-5" aria-describedby="idHelpInlineMod" runat="server" placeholder="Enter SAP ID">
         </div>
 
@@ -102,133 +107,157 @@
 
     <%-- COST CENTER --%>
     <div class="row mt-5 mb-4 align-items-center">
-        <div class="col-1 offset-0">
+        <div class="col-2 offset-0">
             <label for="inputCostCenterAdd" class="col-form-label fs-5">Cost Center:</label>
         </div>
         <div class="col-2">
             <input type="text" id="inputCostCenterAdd" class="form-control fs-5" aria-describedby="costCenterHelpInlineAdd" runat="server" placeholder="Enter Cost Center">
         </div>
-        <div class="col-3">
+        <div class="col-2">
             <span id="costCenterHelpInlineAdd" class="form-text fs-5">Enter Cost Center.
             </span>
         </div>
 
-        <div class="col-1 offset-1">
+        <div class="col-1 offset-0">
             <label for="inputCostCenterMod" class="col-form-label fs-5">Cost Center:</label>
         </div>
-        <div class="col-2">
+        <div class="col-2 offset-1">
             <input type="text" id="inputCostCenterMod" class="form-control fs-5" aria-describedby="inputCostCenterMod" runat="server" placeholder="Enter Cost Center">
+        </div>
+        <div class="col-2">
+            <span id="costCenterHelpInlineMod" class="form-text fs-5">Enter Cost Center.
+            </span>
         </div>
     </div>
 
     <%-- Cost Center Name --%>
     <div class="row mt-5 mb-4 align-items-center">
-        <div class="col-1 offset-0">
-            <label for="inputCostCenterNameAdd" class="col-form-label fs-5">Cost Center Name:</label>
+        <div class="col-2 offset-0">
+            <label for="inputCostCenterNameAdd" class="col-form-label fs-5">Center Name:</label>
+        </div>
+        <div class="col-2 offset-0">
+            <input type="text" id="inputCostCenterNameAdd" class="form-control fs-5" aria-describedby="costCenterNameHelpInlineAdd" runat="server" placeholder="Enter Center Name">
         </div>
         <div class="col-2">
-            <input type="text" id="inputCostCenterNameAdd" class="form-control fs-5" aria-describedby="costCenterNameHelpInlineAdd" runat="server" placeholder="Enter Cost Center Name">
-        </div>
-        <div class="col-3">
-            <span id="costCenterNameHelpInlineAdd" class="form-text fs-5">Enter Cost Center Name.
+            <span id="costCenterNameHelpInlineAdd" class="form-text fs-5">Enter Center Name.
             </span>
         </div>
 
-        <div class="col-1 offset-1">
-            <label for="inputCostCenterNameMod" class="col-form-label fs-5">Cost Center:</label>
+        <div class="col-2 offset-0">
+            <label for="inputCostCenterNameMod" class="col-form-label fs-5">Center Name:</label>
+        </div>
+        <div class="col-2 offset-0">
+            <input type="text" id="inputCostCenterNameMod" class="form-control fs-5" aria-describedby="inputCostCenterNameMod" runat="server" placeholder="Enter Center Name">
         </div>
         <div class="col-2">
-            <input type="text" id="inputCostCenterNameMod" class="form-control fs-5" aria-describedby="inputCostCenterNameMod" runat="server" placeholder="Enter Cost Center Name">
+            <span id="costCenterNameHelpInlineMod" class="form-text fs-5">Enter Center Name.
+            </span>
         </div>
     </div>
 
     <%-- Name and Surname --%>
     <div class="row mt-5 mb-4 align-items-center">
-        <div class="col-1 offset-0">
+        <div class="col-2 offset-0">
             <label for="inputNameSurnameAdd" class="col-form-label fs-5">Full Name:</label>
         </div>
         <div class="col-2">
             <input type="text" id="inputNameSurnameAdd" class="form-control fs-5" aria-describedby="nameSurnameHelpInlineAdd" runat="server" placeholder="Enter Full Name">
         </div>
-        <div class="col-3">
+        <div class="col-2">
             <span id="nameSurnameHelpInlineAdd" class="form-text fs-5">Enter Full Name.
             </span>
         </div>
 
-        <div class="col-1 offset-1">
+        <div class="col-2 offset-0">
             <label for="inputNameSurnameMod" class="col-form-label fs-5">Full Name:</label>
         </div>
         <div class="col-2">
-            <input type="text" id="inputNameSurnameMod" class="form-control fs-5" aria-describedby="inputNameSurnameMod" runat="server" placeholder="Enter Name and Surname">
+            <input type="text" id="inputNameSurnameMod" class="form-control fs-5" aria-describedby="inputNameSurnameMod" runat="server" placeholder="Enter Full Name">
+        </div>
+        <div class="col-2">
+            <span id="nameSurnameHelpInlineMod" class="form-text fs-5">Enter Full Name.
+            </span>
         </div>
     </div>
 
     <%-- Department --%>
     <div class="row mt-5 mb-4 align-items-center">
-        <div class="col-1 offset-0">
+        <div class="col-2 offset-0">
             <label for="inputDepartmentAdd" class="col-form-label fs-5">Department:</label>
         </div>
         <div class="col-2">
             <input type="text" id="inputDepartmentAdd" class="form-control fs-5" aria-describedby="departmentHelpInlineAdd" runat="server" placeholder="Enter Department">
         </div>
-        <div class="col-3">
+        <div class="col-2">
             <span id="departmentHelpInlineAdd" class="form-text fs-5">Enter Department.
             </span>
         </div>
 
-        <div class="col-1 offset-1">
+        <div class="col-2 offset-0">
             <label for="inputDepartmentMod" class="col-form-label fs-5">Department:</label>
         </div>
         <div class="col-2">
             <input type="text" id="inputDepartmentMod" class="form-control fs-5" aria-describedby="inputDepartmentMod" runat="server" placeholder="Enter Department">
         </div>
+        <div class="col-2">
+            <span id="departmentHelpInlineMod" class="form-text fs-5">Enter Department.
+            </span>
+        </div>
     </div>
 
     <%-- Phone --%>
     <div class="row mt-5 mb-4 align-items-center">
-        <div class="col-1 offset-0">
+        <div class="col-2 offset-0">
             <label for="inputPhoneAdd" class="col-form-label fs-5">Phone:</label>
         </div>
         <div class="col-2">
             <input type="text" id="inputPhoneAdd" class="form-control fs-5" aria-describedby="phoneHelpInlineAdd" runat="server" placeholder="Enter Phone">
         </div>
-        <div class="col-3">
+        <div class="col-2">
             <span id="phoneHelpInlineAdd" class="form-text fs-5">Enter Phone.
             </span>
         </div>
 
-        <div class="col-1 offset-1">
+        <div class="col-2 offset-0">
             <label for="inputPhoneMod" class="col-form-label fs-5">Phone:</label>
         </div>
         <div class="col-2">
             <input type="text" id="inputPhoneMod" class="form-control fs-5" aria-describedby="inputPhoneMod" runat="server" placeholder="Enter Phone">
         </div>
+        <div class="col-2">
+            <span id="phoneHelpInlineMod" class="form-text fs-5">Enter Phone.
+            </span>
+        </div>
     </div>
 
     <%-- HomeAddress --%>
     <div class="row mt-5 mb-4 align-items-center">
-        <div class="col-1 offset-0">
+        <div class="col-2 offset-0">
             <label for="inputHomeAddressAdd" class="col-form-label fs-5">Home Address:</label>
         </div>
         <div class="col-2">
             <input type="text" id="inputHomeAddressAdd" class="form-control fs-5" aria-describedby="homeAddressHelpInlineAdd" runat="server" placeholder="Enter Address">
         </div>
-        <div class="col-3">
+        <div class="col-2">
             <span id="homeAddressHelpInlineAdd" class="form-text fs-5">Enter Address.
             </span>
         </div>
 
-        <div class="col-1 offset-1">
+        <div class="col-2 offset-0">
             <label for="inputHomeAddressMod" class="col-form-label fs-5">Address:</label>
         </div>
         <div class="col-2">
             <input type="text" id="inputHomeAddressMod" class="form-control fs-5" aria-describedby="inputHomeAddressMod" runat="server" placeholder="Enter Address">
         </div>
+        <div class="col-2">
+            <span id="homeAddressHelpInlineMod" class="form-text fs-5">Enter Address.
+            </span>
+        </div>
     </div>
 
     <%-- UserStatus --%>
     <div class="row mt-5 mb-4 align-items-center">
-        <div class="col-1 offset-0">
+        <div class="col-2 offset-0">
             <label class="col-form-label fs-5">User Stat:</label>
         </div>
         <div class="col-2 offset-0">
@@ -244,7 +273,7 @@
             </span>
         </div>
 
-        <div class="col-1 offset-2">
+        <div class="col-2 offset-0">
             <label class="col-form-label fs-5">User Stat:</label>
         </div>
         <div class="col-2 offset-0">
@@ -264,7 +293,7 @@
 
     <%-- EmployeeRoute --%>
     <div class="row mt-5 mb-4 align-items-center">
-        <div class="col-1 offset-0">
+        <div class="col-2 offset-0">
             <label class="col-form-label fs-5">Route:</label>
         </div>
         <div class="col-2 offset-0">
@@ -280,7 +309,7 @@
             </span>
         </div>
 
-        <div class="col-1 offset-2">
+        <div class="col-2 offset-0">
             <label class="col-form-label fs-5">Route:</label>
         </div>
         <div class="col-2 offset-0">
