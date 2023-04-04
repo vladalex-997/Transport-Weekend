@@ -49,14 +49,14 @@
                 </button>
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav" style="font-size:x-large; " >
-                        <li id="menuUserCurrent" runat="server" class="nav-item" style="margin-right:40px"><a class="nav-link" id="textPlace" runat="server">PlaceHolder</a></li>
+                        <li id="menuUserCurrent" runat="server" class="nav-item" style="margin-right:30px"><a class="nav-link" id="textPlace" runat="server">PlaceHolder</a></li>
                         <li id="menuLogin" class="nav-item" runat="server"><a class="nav-link" runat="server" href="~/">Login</a></li>
-                        <li id="menuSubordinates" runat="server" class="nav-item" style="margin-left:10px"><a class="nav-link" runat="server" href="~/Subordinates">Subordinates</a></li>
-                        <li id="menuAddModifALL" runat="server" class="nav-item" style="margin-left:10px"><a class="nav-link" runat="server" href="~/AddModifALL">Add / Mod ADMIN</a></li>
-                        <li id="menuAddModidSOME" runat="server" class="nav-item" style="margin-left:10px"><a class="nav-link" runat="server" href="~/AddModifSOME">Add / Mod SUB</a></li>
-                        <li id="menuTemporaryTransport" runat="server" class="nav-item" style="margin-left:10px"><a class="nav-link" runat="server" href="~/TemporaryTransport">Temporary Tran</a></li>
-                        <li id="menuReportPage" runat="server" class="nav-item" style="margin-left:10px"><a class="nav-link" runat="server" href="~/ReportPage">Report Page</a></li>
-                        <li id="menuLogout" runat="server" class="nav-item" style="margin-left:10px"><a class="nav-link" runat="server" href="~/Logout">Logout</a></li>
+                        <li id="menuSubordinates" runat="server" class="nav-item" style="margin-inline:10px;"><a class="nav-link" runat="server" href="~/Subordinates">Subordinates</a></li>
+                        <li id="menuAddModifALL" runat="server" class="nav-item" style="margin-inline:10px"><a class="nav-link" runat="server" href="~/AddModifALL">Add / Mod ADMIN</a></li>
+                        <li id="menuAddModidSOME" runat="server" class="nav-item" style="margin-inline:10px"><a class="nav-link" runat="server" href="~/AddModifSOME">Add / Mod SUB</a></li>
+                        <li id="menuTemporaryTransport" runat="server" class="nav-item" style="margin-inline:10px"><a class="nav-link" runat="server" href="~/TemporaryTransport">Temporary Tran</a></li>
+                        <li id="menuReportPage" runat="server" class="nav-item" style="margin-inline:10px"><a class="nav-link" runat="server" href="~/ReportPage">Report Page</a></li>
+                        <li id="menuLogout" runat="server" class="nav-item" style="margin-inline:10px"><a class="nav-link" runat="server" href="~/Logout">Logout</a></li>
                         
                     </ul>
                 </div>

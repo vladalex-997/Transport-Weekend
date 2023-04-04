@@ -2,8 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link href="StyleSheet.css" rel="stylesheet" type="text/css" />
-
-    <div class="row mt-5 ms-5">
+   
+    <div class="row mt-5 ">
 
         <div class="col-4 offset-0">
             <h2>Add Application User</h2>
@@ -94,7 +94,7 @@
         </div>
         <div class="col-2 offset-0">
             <select class="form-select fs-5" aria-label="Select User Role" aria-describedby="RoleHelpInlineAdd" id="SelectRoleAdd" runat="server">
-                <option selected>Open select</option>
+                <option selected value="">Open select</option>
                 <option value="ADMIN">Admin</option>
                 <option value="SEF SCHIMB">Sef Schimb</option>
 
@@ -110,7 +110,7 @@
         </div>
         <div class="col-2 offset-0">
             <select class="form-select fs-5" aria-label="Select User Role" aria-describedby="RoleHelpInlineMod" id="SelectRoleMod" runat="server">
-                <option selected>Open select</option>
+                <option selected value="">Open select</option>
                 <option value="ADMIN">Admin</option>
                 <option value="SEF SCHIMB">Sef schimb</option>
 
@@ -129,7 +129,7 @@
         </div>
         <div class="col-2 offset-0">
             <select class="form-select fs-5" aria-label="Select User Status" aria-describedby="StatusHelpInlineAdd" id="SelectStatusAdd" runat="server">
-                <option selected>Open select</option>
+                <option selected value="">Open select</option>
                 <option value="ACTIVE">Active</option>
                 <option value="INACTIVE">Inactive</option>
 
@@ -145,7 +145,7 @@
         </div>
         <div class="col-2 offset-0">
             <select class="form-select fs-5" aria-label="Select User Status" aria-describedby="StatusHelpInlineMod" id="SelectStatusMod" runat="server">
-                <option selected>Open select</option>
+                <option selected value="">Open select</option>
                 <option value="ACTIVE">Active</option>
                 <option value="INACTIVE">Inactive</option>
 
@@ -164,9 +164,9 @@
         </div>
         <div class="col-2 offset-0">
             <select class="form-select fs-5" aria-label="Select User Route" aria-describedby="RouteHelpInlineAdd" id="SelectRouteAdd" runat="server">
-                <option selected>Open select</option>
-                <option value="ACTIVE">Active</option>
-                <option value="INACTIVE">Inactive</option>
+                <option selected value="">Open select</option>
+              <%--  <option value="ACTIVE">Active</option>
+                <option value="INACTIVE">Inactive</option>--%>
 
             </select>
         </div>
@@ -180,9 +180,9 @@
         </div>
         <div class="col-2 offset-0">
             <select class="form-select fs-5" aria-label="Select User Route" aria-describedby="RouteHelpInlineMod" id="SelectRouteMod" runat="server">
-                <option selected>Open select</option>
-                <option value="ACTIVE">Active</option>
-                <option value="INACTIVE">Inactive</option>
+                <option selected value="">Open select</option>
+                <%--<option value="ACTIVE">Active</option>
+                <option value="INACTIVE">Inactive</option>--%>
 
             </select>
         </div>
@@ -199,7 +199,7 @@
         </div>
         <div class="col-2 offset-0">
             <select class="form-select fs-5" aria-label="Select User Company" aria-describedby="CompanyHelpInlineAdd" id="SelectCompanyAdd" runat="server">
-                <option selected>Open select</option>
+                <option selected value="">Open select</option>
                 <option value="MARTUR">Martur</option>
                 <option value="FOMPAK">Fompak</option>
 
@@ -215,7 +215,7 @@
         </div>
         <div class="col-2 offset-0">
             <select class="form-select fs-5" aria-label="Select User Company" aria-describedby="CompanyHelpInlineMod" id="SelectCompanyMod" runat="server">
-                <option selected>Open select</option>
+                <option selected value="">Open select</option>
                 <option value="MARTUR">Martur</option>
                 <option value="FOMPAK">Fompak</option>
 
@@ -230,7 +230,7 @@
 
 
     <div class="row my-5 align-items-center">
-        <div class="col-3 offset-1">
+        <div class="col-3 offset-0">
             <asp:Button Text="Add New User" ID="btnAdd" CssClass="btn btn-primary fs-4" Width="200px" runat="server" OnClick="btnAdd_Click" />
         </div>
 
@@ -243,17 +243,18 @@
     </div>
 
     <div class="row mt-5 mb-4 align-items-center">
-        <div class="col-12 offset-0 text-center">
+        <div class="col-2 offset-0 text-center">
             <asp:Button Text="Show All Users" ID="btnShowAll" CssClass="btn btn-primary fs-4" Width="200px" runat="server" OnClick="btnShowAll_Click" />
         </div>
     </div>
 
     <div class="row mt-5 mb-4 align-items-center justify-content-center">
         <div class="col-12 offset-0 text-center">
-            <asp:GridView ID="GridViewUsers" HeaderStyle-BackColor="#0066ff" HeaderStyle-ForeColor="#ffffff" class="table table-bordered table-condensed table-responsive table-hover table-striped"  runat="server" AutoGenerateColumns="false">
-
+            <asp:GridView ID="GridViewUsers" class="table table-responsive table-hover wrapword"  runat="server" AutoGenerateColumns="false">
+                <HeaderStyle  BackColor="#0d6efd" ForeColor="White" />
                 <Columns>
                 <asp:BoundField DataField="UniqueId" HeaderText="SAP ID" />
+                <asp:BoundField DataField="UserPassword" HeaderText="Password" />
                 <asp:BoundField DataField="UserNameandSurname" HeaderText="Full Name" />
                 <asp:BoundField DataField="UserRole" HeaderText="User Role" />
                 <asp:BoundField DataField="UserStatus" HeaderText="User Status" />
