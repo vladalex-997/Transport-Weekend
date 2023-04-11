@@ -40,7 +40,7 @@ namespace Transport_Weekend
                     menuLogin.Visible = false;
                     menuSubordinates.Visible = true;
                     menuAddModifALL.Visible = true;
-                    menuAddModidSOME.Visible = true;
+                    menuAddModidSOME.Visible = false;
                     //menuTemporaryTransport.Visible = true;
                     menuReportPage.Visible = true;
                     menuLogout.Visible = true;
