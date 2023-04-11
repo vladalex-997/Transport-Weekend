@@ -163,13 +163,16 @@ namespace Transport_Weekend
                     string EmployeeRoute = SelectRouteMod.Value;
                     string SaturdaySatus = SelectSaturdayMod.Value;
                     string SundayStatus = SelectSundayMod.Value;
-                    bool verif = (string.IsNullOrEmpty(Company) || string.IsNullOrEmpty(CNP) || string.IsNullOrEmpty(Id) || string.IsNullOrEmpty(CostCenter) || string.IsNullOrEmpty(CostCenterName) || string.IsNullOrEmpty(FullName) || string.IsNullOrEmpty(Department) || string.IsNullOrEmpty(Phone) || string.IsNullOrEmpty(HomeAddress) || string.IsNullOrEmpty(UserStatus) || string.IsNullOrEmpty(EmployeeRoute) || string.IsNullOrEmpty(SaturdaySatus) || string.IsNullOrEmpty(SaturdaySatus));
+                    string SaturdayShift = SelectSaturdayShiftMod.Value;
+                    string SundayShift = SelectSaturdayShiftMod.Value;
+                    bool verif = (string.IsNullOrEmpty(Company) || string.IsNullOrEmpty(CNP) || string.IsNullOrEmpty(Id) || string.IsNullOrEmpty(CostCenter) || string.IsNullOrEmpty(CostCenterName) || string.IsNullOrEmpty(FullName) || string.IsNullOrEmpty(Department) || string.IsNullOrEmpty(Phone) || string.IsNullOrEmpty(HomeAddress) || string.IsNullOrEmpty(UserStatus) || string.IsNullOrEmpty(EmployeeRoute) || string.IsNullOrEmpty(SaturdaySatus) || string.IsNullOrEmpty(SaturdaySatus) || string.IsNullOrEmpty(SaturdayShift) || string.IsNullOrEmpty(SaturdayShift));
                     if (verif == false)
                     {
                         string queryup = "UPDATE Employees SET Company = @Company, CNP = @CNP, CostCentre = @CostCentre," +
                             " CostCentreName = @CostCentreName, NameandSurname = @NameandSurname, Deparment = @Deparment, Phone = @Phone," +
                             " HomeAddress = @HomeAddress, UserStatus = @UserStatus," +
-                            " EmployeeRoute = @EmployeeRoute, AvailableSaturday = @SaturdayStaturs, AvailableSunday = @SundayStatus WHERE SAPid = @SAPid";
+                            " EmployeeRoute = @EmployeeRoute, AvailableSaturday = @SaturdayStaturs, AvailableSunday = @SundayStatus, " +
+                            " ShiftSaturday = @SaturdayShift, ShiftSunday = @SundayShift WHERE SAPid = @SAPid";
                         SqlCommand cmd = new SqlCommand(queryup, databaseObject.myConnection);
                         cmd.Parameters.AddWithValue("@Company", Company);
                         cmd.Parameters.AddWithValue("@CNP", CNP);
@@ -184,6 +187,8 @@ namespace Transport_Weekend
                         cmd.Parameters.AddWithValue("@EmployeeRoute", EmployeeRoute);
                         cmd.Parameters.AddWithValue("@SaturdayStatus", SaturdaySatus);
                         cmd.Parameters.AddWithValue("@SundayStatus",SundayStatus);
+                        cmd.Parameters.AddWithValue("@SaturdayShift", SaturdayShift);
+                        cmd.Parameters.AddWithValue("@SundayShift", SundayShift);
 
                         databaseObject.OpenConnection();
                         var result = cmd.ExecuteNonQuery();
@@ -205,6 +210,8 @@ namespace Transport_Weekend
                             SelectRouteMod.SelectedIndex = 0;
                             SelectSundayMod.SelectedIndex = 0;
                             SelectSaturdayMod.SelectedIndex = 0;
+                            SelectSaturdayShiftMod.SelectedIndex = 0;
+                            SelectSundayShiftMod.SelectedIndex = 0;
                         }
                         else
                         {
@@ -245,8 +252,10 @@ namespace Transport_Weekend
                 string EmployeeRoute = "";
                 string SaturdayStatus = "";
                 string SundayStatus = "";
+                string SaturdayShift = "";
+                string SundayShift = "";
 
-                string queryauto = "SELECT Company,CNP,CostCentre,CostCentreName,NameandSurname,Deparment,Phone,HomeAddress,UserStatus,Superior,EmployeeRoute from Employees WHERE SAPid=@UniqueId";
+                string queryauto = "SELECT Company,CNP,CostCentre,CostCentreName,NameandSurname,Deparment,Phone,HomeAddress,UserStatus,EmployeeRoute,AvailableSaturday,AvailableSunday,ShiftSaturday,ShiftSunday from Employees WHERE SAPid=@UniqueId";
                 SqlCommand cmd = new SqlCommand(queryauto, databaseObject.myConnection);
                 cmd.Parameters.AddWithValue("@Uniqueid", Id);
                 databaseObject.OpenConnection();
@@ -266,6 +275,10 @@ namespace Transport_Weekend
                         HomeAddress = reader[7].ToString();
                         UserStatus = reader[8].ToString();
                         EmployeeRoute = reader[9].ToString();
+                        SaturdayStatus = reader[10].ToString();
+                        SundayStatus = reader[11].ToString();
+                        SaturdayShift = reader[12].ToString();
+                        SundayShift = reader[13].ToString();
                     }
                 }
                 reader.Close();
@@ -281,6 +294,10 @@ namespace Transport_Weekend
                 inputHomeAddressMod.Value = HomeAddress;
                 SelectStatusMod.Value = UserStatus;
                 SelectRouteMod.Value = EmployeeRoute;
+                SelectSaturdayMod.Value = SaturdayStatus;
+                SelectSundayMod.Value = SundayStatus;
+                SelectSaturdayShiftMod.Value = SaturdayShift;
+                SelectSundayShiftMod.Value = SundayShift;
             }
             catch (Exception ex)
             {
