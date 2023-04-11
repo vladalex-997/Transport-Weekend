@@ -161,13 +161,15 @@ namespace Transport_Weekend
                     string HomeAddress = inputHomeAddressMod.Value;
                     string UserStatus = SelectStatusMod.Value;
                     string EmployeeRoute = SelectRouteMod.Value;
-                    bool verif = (string.IsNullOrEmpty(Company) || string.IsNullOrEmpty(CNP) || string.IsNullOrEmpty(Id) || string.IsNullOrEmpty(CostCenter) || string.IsNullOrEmpty(CostCenterName) || string.IsNullOrEmpty(FullName) || string.IsNullOrEmpty(Department) || string.IsNullOrEmpty(Phone) || string.IsNullOrEmpty(HomeAddress) || string.IsNullOrEmpty(UserStatus) || string.IsNullOrEmpty(EmployeeRoute));
+                    string SaturdaySatus = SelectSaturdayMod.Value;
+                    string SundayStatus = SelectSundayMod.Value;
+                    bool verif = (string.IsNullOrEmpty(Company) || string.IsNullOrEmpty(CNP) || string.IsNullOrEmpty(Id) || string.IsNullOrEmpty(CostCenter) || string.IsNullOrEmpty(CostCenterName) || string.IsNullOrEmpty(FullName) || string.IsNullOrEmpty(Department) || string.IsNullOrEmpty(Phone) || string.IsNullOrEmpty(HomeAddress) || string.IsNullOrEmpty(UserStatus) || string.IsNullOrEmpty(EmployeeRoute) || string.IsNullOrEmpty(SaturdaySatus) || string.IsNullOrEmpty(SaturdaySatus));
                     if (verif == false)
                     {
                         string queryup = "UPDATE Employees SET Company = @Company, CNP = @CNP, CostCentre = @CostCentre," +
                             " CostCentreName = @CostCentreName, NameandSurname = @NameandSurname, Deparment = @Deparment, Phone = @Phone," +
                             " HomeAddress = @HomeAddress, UserStatus = @UserStatus," +
-                            " EmployeeRoute = @EmployeeRoute WHERE SAPid = @SAPid";
+                            " EmployeeRoute = @EmployeeRoute, AvailableSaturday = @SaturdayStaturs, AvailableSunday = @SundayStatus WHERE SAPid = @SAPid";
                         SqlCommand cmd = new SqlCommand(queryup, databaseObject.myConnection);
                         cmd.Parameters.AddWithValue("@Company", Company);
                         cmd.Parameters.AddWithValue("@CNP", CNP);
@@ -180,6 +182,8 @@ namespace Transport_Weekend
                         cmd.Parameters.AddWithValue("@HomeAddress", HomeAddress);
                         cmd.Parameters.AddWithValue("@UserStatus", UserStatus);
                         cmd.Parameters.AddWithValue("@EmployeeRoute", EmployeeRoute);
+                        cmd.Parameters.AddWithValue("@SaturdayStatus", SaturdaySatus);
+                        cmd.Parameters.AddWithValue("@SundayStatus",SundayStatus);
 
                         databaseObject.OpenConnection();
                         var result = cmd.ExecuteNonQuery();
@@ -199,6 +203,8 @@ namespace Transport_Weekend
                             inputHomeAddressMod.Value = "";
                             SelectStatusMod.SelectedIndex = 0;
                             SelectRouteMod.SelectedIndex = 0;
+                            SelectSundayMod.SelectedIndex = 0;
+                            SelectSaturdayMod.SelectedIndex = 0;
                         }
                         else
                         {
@@ -237,6 +243,8 @@ namespace Transport_Weekend
                 string HomeAddress = "";
                 string UserStatus = "";
                 string EmployeeRoute = "";
+                string SaturdayStatus = "";
+                string SundayStatus = "";
 
                 string queryauto = "SELECT Company,CNP,CostCentre,CostCentreName,NameandSurname,Deparment,Phone,HomeAddress,UserStatus,Superior,EmployeeRoute from Employees WHERE SAPid=@UniqueId";
                 SqlCommand cmd = new SqlCommand(queryauto, databaseObject.myConnection);

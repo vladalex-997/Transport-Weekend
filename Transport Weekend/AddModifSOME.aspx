@@ -253,6 +253,60 @@
 
     </div>
 
+    <%-- AvailableSaturday --%>
+    <div class="row mt-5 mb-4 align-items-center">
+        <div class="col-1 offset-0 me-4 ">
+        </div>
+        <div class="col-1 offset-5 me-4 ">
+            <label class="col-form-label fs-5">Saturday:</label>
+        </div>
+        <div class="col-2 offset-0">
+            <select class="form-select fs-5" aria-label="Select Saturday Status" aria-describedby="StatusHelpInlineMod" id="SelectSaturdayMod" runat="server">
+                <option selected value="">Open select</option>
+                <option value="AVAILABLE">Active</option>
+                <option value="PROGRAMED">Programed</option>
+                <option value="BUSY">Busy</option>
+            </select>
+        </div>
+
+    </div>
+
+    <%-- AvailableSunday --%>
+    <div class="row mt-5 mb-4 align-items-center">
+        <div class="col-1 offset-0 me-4 ">
+        </div>
+        <div class="col-1 offset-5 me-4 ">
+            <label class="col-form-label fs-5">Sunday:</label>
+        </div>
+        <div class="col-2 offset-0">
+            <select class="form-select fs-5" aria-label="Select Saturday Status" aria-describedby="StatusHelpInlineMod" id="SelectSundayMod" runat="server">
+                <option selected value="">Open select</option>
+                <option value="AVAILABLE">Active</option>
+                <option value="PROGRAMED">Programed</option>
+                <option value="BUSY">Busy</option>
+            </select>
+        </div>
+
+    </div>
+
+    <%-- ShiftSunday --%>
+    <div class="row mt-5 mb-4 align-items-center">
+        <div class="col-1 offset-0 me-4 ">
+        </div>
+        <div class="col-1 offset-5 me-4 ">
+            <label class="col-form-label fs-5">Sunday:</label>
+        </div>
+        <div class="col-2 offset-0">
+            <select class="form-select fs-5" aria-label="Select Saturday Status" aria-describedby="StatusHelpInlineMod" id="Select1" runat="server">
+                <option selected value="">Open select</option>
+                <option value="NONE">None</option>
+                <option value="PROGRAMED">Programed</option>
+                <option value="BUSY">Busy</option>
+            </select>
+        </div>
+
+    </div>
+
     <%-- Buttons --%>
     <div class="row my-5 align-items-center">
 
