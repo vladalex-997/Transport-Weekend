@@ -16,7 +16,7 @@ namespace Transport_Weekend
             menuSubordinates.Visible = false;
             menuAddModifALL.Visible = false;
             menuAddModidSOME.Visible = false;   
-            menuTemporaryTransport.Visible = false;
+            //menuTemporaryTransport.Visible = false;
             menuReportPage.Visible = false;
             menuLogout.Visible = false;
             if (Session["login"] != null)
@@ -41,7 +41,7 @@ namespace Transport_Weekend
                     menuSubordinates.Visible = true;
                     menuAddModifALL.Visible = true;
                     menuAddModidSOME.Visible = true;
-                    menuTemporaryTransport.Visible = true;
+                    //menuTemporaryTransport.Visible = true;
                     menuReportPage.Visible = true;
                     menuLogout.Visible = true;
                 }
@@ -53,7 +53,7 @@ namespace Transport_Weekend
                     menuSubordinates.Visible = true;
                     menuAddModifALL.Visible = false;
                     menuAddModidSOME.Visible = true;
-                    menuTemporaryTransport.Visible = true;
+                    //menuTemporaryTransport.Visible = true;
                     menuReportPage.Visible = false;
                     menuLogout.Visible = true;
                 }
@@ -64,7 +64,7 @@ namespace Transport_Weekend
                     menuSubordinates.Visible = false;
                     menuAddModifALL.Visible = false;
                     menuAddModidSOME.Visible = false;
-                    menuTemporaryTransport.Visible = false;
+                    //menuTemporaryTransport.Visible = false;
                     menuReportPage.Visible = false;
                     menuLogout.Visible = false;
                 }

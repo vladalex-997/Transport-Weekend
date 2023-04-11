@@ -295,13 +295,13 @@ namespace Transport_Weekend
             //string loggedin = getUserName.GetName(loggedinID);
             try
             {
-                string active = "ACTIVE";
+                
                 Database databaseObject = new Database();
                 databaseObject.OpenConnection();
-                string query = "SELECT * FROM Employees WHERE Superior = @Superior AND UserStatus = @Active";
+                string query = "SELECT * FROM Employees WHERE Superior = @Superior";
                 SqlCommand myquerytab = new SqlCommand(query, databaseObject.myConnection);
                 myquerytab.Parameters.AddWithValue("@Superior", loggedin);
-                myquerytab.Parameters.AddWithValue("@Active", active);
+                
 
                 SqlDataAdapter daquery = new SqlDataAdapter(myquerytab);
                 DataSet ds = new DataSet();
