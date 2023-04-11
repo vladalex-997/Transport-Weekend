@@ -4,7 +4,7 @@
 
     <div class="row mt-5 ">
 
-        <div class="col-4 offset-0">
+        <div class="col-3 offset-0 me-4">
             <h2>Add Application User</h2>
         </div>
 
@@ -14,9 +14,59 @@
 
     </div>
 
+
+     <%-- SAP ID --%>
+    <div class="row mt-5 mb-4 align-items-center">
+        <div class="col-1 offset-0 me-4">
+            <label for="inputIdAdd" class="col-form-label fs-5">SAP ID:</label>
+        </div>
+        <div class="col-2 offset-0">
+            <input type="text" id="inputIdAdd" class="form-control fs-5" aria-describedby="idHelpInlineAdd" runat="server" placeholder="Enter SAP ID">
+        </div>
+        
+
+        <div class="col-1 offset-3 me-4">
+            <label for="inputIdMod" class="col-form-label fs-5">SAP ID:</label>
+        </div>
+        <div class="col-2 offset-0">
+            <input type="text" id="inputIdMod" class="form-control fs-5" aria-describedby="idHelpInlineMod" runat="server" placeholder="Enter SAP ID">
+        </div>
+
+        <div class="col-2">
+            <asp:Button Text="Autocom by ID" ID="Button1" CssClass="btn btn-primary fs-4" runat="server" OnClick="btnAutoCom_Click" />
+        </div>
+    </div>
+
+
+    <%-- CNP --%>
+    <div class="row mt-5 mb-4 align-items-center">
+        <div class="col-1 offset-0 me-4">
+            <label for="inputCPNAdd" class="col-form-label fs-5">CNP:</label>
+        </div>
+
+        <div class="col-2 offset-0">
+            <input type="text" id="inputCNPAdd" class="form-control fs-5" aria-describedby="cnpHelpInlineAdd" runat="server" placeholder="Enter CNP">
+        </div>
+
+        
+
+        <div class="col-1 offset-3 me-4">
+            <label for="inputCNPMod" class="col-form-label fs-5">CNP:</label>
+        </div>
+
+        <div class="col-2 offset-0">
+            <input type="text" id="inputCNPMod" class="form-control fs-5" aria-describedby="cnpHelpInlineMod" runat="server" placeholder="Enter CNP">
+        </div>
+
+       
+
+    </div>
+
+
+    
     <%-- Company --%>
     <div class="row mt-5 mb-4 align-items-center">
-        <div class="col-2 offset-0">
+        <div class="col-1 offset-0 me-4 ">
             <label class="col-form-label fs-5">Company:</label>
         </div>
         <div class="col-2 offset-0">
@@ -27,12 +77,9 @@
 
             </select>
         </div>
-        <div class="col-2">
-            <span id="CompanyHelpInlineAdd" class="form-text fs-5">Select a value.
-            </span>
-        </div>
 
-        <div class="col-2 offset-0">
+
+        <div class="col-1 offset-3 me-4">
             <label class="col-form-label fs-5">Company:</label>
         </div>
         <div class="col-2 offset-0">
@@ -43,67 +90,10 @@
 
             </select>
         </div>
-        <div class="col-2">
-            <span id="CompanyHelpInlineMod" class="form-text fs-5">Select a value.
-            </span>
-        </div>
+        
 
     </div>
-
-    <%-- CNP --%>
-    <div class="row mt-5 mb-4 align-items-center">
-        <div class="col-1 offset-0">
-            <label for="inputCPNAdd" class="col-form-label fs-5">CNP:</label>
-        </div>
-
-        <div class="col-2 offset-1">
-            <input type="text" id="inputCNPAdd" class="form-control fs-5" aria-describedby="cnpHelpInlineAdd" runat="server" placeholder="Enter CNP">
-        </div>
-
-        <div class="col-2">
-            <span id="cnpHelpInlineAdd" class="form-text fs-5">Enter CNP.
-            </span>
-        </div>
-
-        <div class="col-1 offset-0">
-            <label for="inputCNPMod" class="col-form-label fs-5">CNP:</label>
-        </div>
-
-        <div class="col-2 offset-1">
-            <input type="text" id="inputCNPMod" class="form-control fs-5" aria-describedby="cnpHelpInlineMod" runat="server" placeholder="Enter CNP">
-        </div>
-
-        <div class="col-2">
-            <span id="cnpHelpInlineMod" class="form-text fs-5">Enter CNP.
-            </span>
-        </div>
-
-    </div>
-
-    <%-- SAP ID --%>
-    <div class="row mt-5 mb-4 align-items-center">
-        <div class="col-1 offset-0">
-            <label for="inputIdAdd" class="col-form-label fs-5">SAP ID:</label>
-        </div>
-        <div class="col-2 offset-1">
-            <input type="text" id="inputIdAdd" class="form-control fs-5" aria-describedby="idHelpInlineAdd" runat="server" placeholder="Enter SAP ID">
-        </div>
-        <div class="col-2">
-            <span id="idHelpInlineAdd" class="form-text fs-5">Enter Unique ID (Cannot be modified later).
-            </span>
-        </div>
-
-        <div class="col-1 offset-0">
-            <label for="inputIdMod" class="col-form-label fs-5">SAP ID:</label>
-        </div>
-        <div class="col-2 offset-1">
-            <input type="text" id="inputIdMod" class="form-control fs-5" aria-describedby="idHelpInlineMod" runat="server" placeholder="Enter SAP ID">
-        </div>
-
-        <div class="col-2">
-            <asp:Button Text="Autocom by ID" ID="Button1" CssClass="btn btn-primary fs-4" runat="server" OnClick="btnAutoCom_Click" />
-        </div>
-    </div>
+   
 
     <%-- COST CENTER --%>
     <div class="row mt-5 mb-4 align-items-center">
