@@ -203,37 +203,74 @@ namespace Transport_Weekend
                     var res = cmdup.ExecuteNonQuery();
                     databaseObject.CloseConnection();
 
-                    string queryadd = "INSERT INTO ScheduleTemporary(Company,CNP,SAPid,CostCentre,CostCentreName,NameandSurname,Department,Phone,HomeAddress,UserStatus,Superior,EmployeeRoute,AvailableSaturday,AvailableSunday,ShiftSaturday,ShiftSunday) " +
-                        "VALUES (@Company,@CNP,@SAPid,@CostCentre,@CostCentreName,@NameandSurname,@Deparment,@Phone,@HomeAddress,@UserStatus,@Superior,@EmployeeRoute,@AvailableSaturday,@AvailableSunday,@ShiftSaturday,@ShiftSunday)";
-                    SqlCommand cmdadd = new SqlCommand(queryadd, databaseObject.myConnection);
-                    cmdadd.Parameters.AddWithValue("@Company", Company);
-                    cmdadd.Parameters.AddWithValue("@CNP", CNP);
-                    cmdadd.Parameters.AddWithValue("@SAPid", Id);
-                    cmdadd.Parameters.AddWithValue("@CostCentre", CostCenter);
-                    cmdadd.Parameters.AddWithValue("@CostCentreName", CostCenterName);
-                    cmdadd.Parameters.AddWithValue("@NameandSurname", FullName);
-                    cmdadd.Parameters.AddWithValue("@Deparment", Department);
-                    cmdadd.Parameters.AddWithValue("@Phone", Phone);
-                    cmdadd.Parameters.AddWithValue("@HomeAddress", HomeAddress);
-                    cmdadd.Parameters.AddWithValue("@UserStatus", UserStatus);
-                    cmdadd.Parameters.AddWithValue("@Superior", Superior);
-                    cmdadd.Parameters.AddWithValue("@EmployeeRoute", EmployeeRoute);
-                    cmdadd.Parameters.AddWithValue("@AvailableSaturday", SaturdayStatus);
-                    cmdadd.Parameters.AddWithValue("@ShiftSaturday", SaturdayShift);
-                    cmdadd.Parameters.AddWithValue("@AvailableSunday", SundayStatus);
-                    cmdadd.Parameters.AddWithValue("@ShiftSunday", SundayShift);
+                    string verify = "SELECT * from ScheduleTemporary WHERE NameandSurname=@NameandSurname";
+                    SqlCommand cmdverif=new SqlCommand(verify,databaseObject.myConnection);
+                    cmdverif.Parameters.AddWithValue("@NameandSurname", selectedName);
 
                     databaseObject.OpenConnection();
-                    var result = cmdadd.ExecuteNonQuery();
+                    var temporary = cmdverif.ExecuteScalar();
+
                     databaseObject.CloseConnection();
 
-                    MsgBox("Employee Programmed Succesfully !", this.Page, this);
-                    RefreshGridAll();
-                    RefreshGridProgrammed();
-                    ReloadNames();
-                    SelectDay.SelectedIndex = 0;
-                    SelectName.SelectedIndex = 0;   
-                    SelectShift.SelectedIndex = 0;
+                    if( temporary is null)
+                    {
+                        string queryadd = "INSERT INTO ScheduleTemporary(Company,CNP,SAPid,CostCentre,CostCentreName,NameandSurname,Department,Phone,HomeAddress,UserStatus,Superior,EmployeeRoute,AvailableSaturday,AvailableSunday,ShiftSaturday,ShiftSunday) " +
+                        "VALUES (@Company,@CNP,@SAPid,@CostCentre,@CostCentreName,@NameandSurname,@Deparment,@Phone,@HomeAddress,@UserStatus,@Superior,@EmployeeRoute,@AvailableSaturday,@AvailableSunday,@ShiftSaturday,@ShiftSunday)";
+                        SqlCommand cmdadd = new SqlCommand(queryadd, databaseObject.myConnection);
+                        cmdadd.Parameters.AddWithValue("@Company", Company);
+                        cmdadd.Parameters.AddWithValue("@CNP", CNP);
+                        cmdadd.Parameters.AddWithValue("@SAPid", Id);
+                        cmdadd.Parameters.AddWithValue("@CostCentre", CostCenter);
+                        cmdadd.Parameters.AddWithValue("@CostCentreName", CostCenterName);
+                        cmdadd.Parameters.AddWithValue("@NameandSurname", FullName);
+                        cmdadd.Parameters.AddWithValue("@Deparment", Department);
+                        cmdadd.Parameters.AddWithValue("@Phone", Phone);
+                        cmdadd.Parameters.AddWithValue("@HomeAddress", HomeAddress);
+                        cmdadd.Parameters.AddWithValue("@UserStatus", UserStatus);
+                        cmdadd.Parameters.AddWithValue("@Superior", Superior);
+                        cmdadd.Parameters.AddWithValue("@EmployeeRoute", EmployeeRoute);
+                        cmdadd.Parameters.AddWithValue("@AvailableSaturday", SaturdayStatus);
+                        cmdadd.Parameters.AddWithValue("@ShiftSaturday", SaturdayShift);
+                        cmdadd.Parameters.AddWithValue("@AvailableSunday", SundayStatus);
+                        cmdadd.Parameters.AddWithValue("@ShiftSunday", SundayShift);
+
+                        databaseObject.OpenConnection();
+                        var result = cmdadd.ExecuteNonQuery();
+                        databaseObject.CloseConnection();
+
+                        MsgBox("Employee Programmed Succesfully !", this.Page, this);
+                        RefreshGridAll();
+                        RefreshGridProgrammed();
+                        ReloadNames();
+                        SelectDay.SelectedIndex = 0;
+                        SelectName.SelectedIndex = 0;
+                        SelectShift.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        string updatetem = "UPDATE ScheduleTemporary SET AvailableSaturday=@SaturdayStatus, ShiftSaturday=@SaturdayShift, AvailableSunday=@SundayStatus, ShiftSunday=@SundayShift WHERE NameandSurname=@NameandSurname ";
+                        SqlCommand cmduptem = new SqlCommand(updatetem, databaseObject.myConnection);
+                        cmduptem.Parameters.AddWithValue("@SaturdayStatus", SaturdayStatus);
+                        cmduptem.Parameters.AddWithValue("@SaturdayShift", SaturdayShift);
+                        cmduptem.Parameters.AddWithValue("@SundayStatus", SundayStatus);
+                        cmduptem.Parameters.AddWithValue("@SundayShift", SundayShift);
+                        cmduptem.Parameters.AddWithValue("@NameandSurname", selectedName);
+
+                        databaseObject.OpenConnection();
+                        var restem = cmduptem.ExecuteNonQuery();
+                        databaseObject.CloseConnection();
+
+                        MsgBox("Employee Programmed Succesfully !", this.Page, this);
+                        RefreshGridAll();
+                        RefreshGridProgrammed();
+                        ReloadNames();
+                        SelectDay.SelectedIndex = 0;
+                        SelectName.SelectedIndex = 0;
+                        SelectShift.SelectedIndex = 0;
+                    }
+
+
+                    
                     
 
                 }
