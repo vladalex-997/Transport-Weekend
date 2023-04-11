@@ -231,6 +231,42 @@ namespace Transport_Weekend
         protected global::System.Web.UI.WebControls.Button btnAdd;
 
         /// <summary>
+        /// SelectSaturdayMod control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect SelectSaturdayMod;
+
+        /// <summary>
+        /// SelectSundayMod control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect SelectSundayMod;
+
+        /// <summary>
+        /// SelectSaturdayShiftMod control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect SelectSaturdayShiftMod;
+
+        /// <summary>
+        /// SelectSundayShiftMod control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect SelectSundayShiftMod;
+
+        /// <summary>
         /// btnModif control.
         /// </summary>
         /// <remarks>

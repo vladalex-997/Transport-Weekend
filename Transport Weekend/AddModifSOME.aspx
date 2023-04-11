@@ -253,14 +253,86 @@
 
     </div>
 
-    <%-- Buttons --%>
-    <div class="row my-5 align-items-center">
-
+    <%-- AvailableSaturday --%>
+    <div class="row mt-5 mb-4 align-items-center">
         <%-- ADD USER --%>
         <div class="col-3 offset-0 me-4">
             <asp:Button Text="Add Employee" ID="btnAdd" CssClass="btn btn-primary fs-4" Width="200px" runat="server" OnClick="btnAdd_Click" />
         </div>
+        <div class="col-1 offset-3 me-4 ">
+            <label class="col-form-label fs-5">Saturday:</label>
+        </div>
+        <div class="col-2 offset-0">
+            <select class="form-select fs-5" aria-label="Select Saturday Status" aria-describedby="StatusHelpInlineMod" id="SelectSaturdayMod" runat="server">
+                <option selected value="">Open select</option>
+                <option value="AVAILABLE">Available</option>
+                <option value="PROGRAMED">Programed</option>
+                <option value="BUSY">Busy</option>
+            </select>
+        </div>
 
+    </div>
+
+    <%-- AvailableSunday --%>
+    <div class="row mt-5 mb-4 align-items-center">
+        <div class="col-1 offset-0 me-4 ">
+        </div>
+        <div class="col-1 offset-5 me-4 ">
+            <label class="col-form-label fs-5">Sunday:</label>
+        </div>
+        <div class="col-2 offset-0">
+            <select class="form-select fs-5" aria-label="Select Saturday Status" aria-describedby="StatusHelpInlineMod" id="SelectSundayMod" runat="server">
+                <option selected value="">Open select</option>
+                <option value="AVAILABLE">Available</option>
+                <option value="PROGRAMED">Programed</option>
+                <option value="BUSY">Busy</option>
+            </select>
+        </div>
+
+    </div>
+
+    <%-- ShiftSaturday --%>
+    <div class="row mt-5 mb-4 align-items-center">
+        <div class="col-1 offset-0 me-4 ">
+        </div>
+        <div class="col-1 offset-5 me-4 ">
+            <label class="col-form-label fs-5">SaturdayShift:</label>
+        </div>
+        <div class="col-2 offset-0">
+            <select class="form-select fs-5" aria-label="Select Saturday Status" aria-describedby="StatusHelpInlineMod" id="SelectSaturdayShiftMod" runat="server">
+                <option selected value="">Open select</option>
+                <option value="NONE">None</option>
+                <option value="SHIFT 1">Shift 1</option>
+                <option value="SHIFT 2">Shift 2</option>
+                <option value="SHIFT 3">Shift 3</option>
+            </select>
+        </div>
+
+    </div>
+
+    <%-- ShiftSunday --%>
+    <div class="row mt-5 mb-4 align-items-center">
+        <div class="col-1 offset-0 me-4 ">
+        </div>
+        <div class="col-1 offset-5 me-4 ">
+            <label class="col-form-label fs-5">SundayShift:</label>
+        </div>
+        <div class="col-2 offset-0">
+            <select class="form-select fs-5" aria-label="Select Sunday Status" aria-describedby="StatusHelpInlineMod" id="SelectSundayShiftMod" runat="server">
+                <option selected value="">Open select</option>
+                <option value="NONE">None</option>
+                <option value="SHIFT 1">Shift 1</option>
+                <option value="SHIFT 2">Shift 2</option>
+                <option value="SHIFT 3">Shift 3</option>
+            </select>
+        </div>
+
+    </div>
+
+    <%-- Buttons --%>
+    <div class="row my-5 align-items-center">
+        <div class="col-3 offset-0 me-4">
+        </div>
         <%-- MOD USER --%>
         <div class="col-3 offset-3">
             <asp:Button Text="Modify Employee" ID="btnModif" CssClass="btn btn-primary fs-4" Width="220px" runat="server" OnClick="btnModif_Click" />
@@ -269,9 +341,10 @@
     </div>
 
     <%-- SHOW ALL --%>
+    <div style="height:30px;"></div>
     <div class="row mt-5 mb-4 align-items-center">
-        <div class="col-2 offset-0 text-center">
-            <asp:Button Text="Show All" ID="btnShowAll" CssClass="btn btn-primary fs-4" Width="200px" runat="server" OnClick="btnShowAll_Click" />
+        <div class="col-2 offset-4 text-center">
+            <asp:Button Text="Show All" ID="btnShowAll" CssClass="btn btn-primary fs-4" Width="400px" runat="server" OnClick="btnShowAll_Click" />
         </div>
     </div>
 
