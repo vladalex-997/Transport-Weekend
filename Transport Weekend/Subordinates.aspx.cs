@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Antlr.Runtime.Misc;
 
 namespace Transport_Weekend
 {
@@ -116,7 +117,29 @@ namespace Transport_Weekend
 
         protected void btndeleteProgrammed_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Database databaseObject = new Database();
+                string query = "SELECT NameandSurname from ScheduleTemporary";
+                SqlCommand myquerytab = new SqlCommand(query, databaseObject.myConnection);
 
+                databaseObject.OpenConnection();
+                SqlDataAdapter daquery = new SqlDataAdapter(myquerytab);
+                DataTable dt = new DataTable();
+                daquery.Fill(dt);
+                var listtemporary = dt.AsEnumerable().Select(r => r.Field<string>("NameandSurname")).ToList();
+                databaseObject.CloseConnection();
+
+                foreach(string s in listtemporary)
+                {
+                    //updatam alea la NONE si available si dupa stergem tabel
+                }
+
+            }
+            catch(Exception ex)
+            {
+                MsgBox(ex.ToString(), this.Page, this);
+            }
         }
 
         protected void btnSchedule_Click(object sender, EventArgs e)
