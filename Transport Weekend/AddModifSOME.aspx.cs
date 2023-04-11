@@ -58,9 +58,9 @@ namespace Transport_Weekend
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-            string loggedinID = Request.Cookies["userdata"].Value;
-            GetUserName getUserName = new GetUserName();
-            string loggedin = getUserName.GetName(loggedinID);
+            string loggedin = Request.Cookies["userdata"].Value;
+            //GetUserName getUserName = new GetUserName();
+            //string loggedin = getUserName.GetName(loggedinID);
 
             try
             {
@@ -282,23 +282,25 @@ namespace Transport_Weekend
 
         protected void btnShowAll_Click(object sender, EventArgs e)
         {
-            string loggedinID = Request.Cookies["userdata"].Value;
-            GetUserName getUserName = new GetUserName();
-            string loggedin = getUserName.GetName(loggedinID);
+            string loggedin = Request.Cookies["userdata"].Value;
+            //GetUserName getUserName = new GetUserName();
+            //string loggedin = getUserName.GetName(loggedinID);
             try
             {
-                    Database databaseObject = new Database();
-                    databaseObject.OpenConnection();
-                    string query = "SELECT * FROM Employees WHERE Superior = @Superior";
-                    SqlCommand myquerytab = new SqlCommand(query, databaseObject.myConnection);
-                    myquerytab.Parameters.AddWithValue("@Superior", loggedin);
+                string active = "ACTIVE";
+                Database databaseObject = new Database();
+                databaseObject.OpenConnection();
+                string query = "SELECT * FROM Employees WHERE Superior = @Superior AND UserStatus = @Active";
+                SqlCommand myquerytab = new SqlCommand(query, databaseObject.myConnection);
+                myquerytab.Parameters.AddWithValue("@Superior", loggedin);
+                myquerytab.Parameters.AddWithValue("@Active", active);
 
-                    SqlDataAdapter daquery = new SqlDataAdapter(myquerytab);
-                    DataSet ds = new DataSet();
-                    daquery.Fill(ds);
-                    GridViewEmployees.DataSource = ds;
-                    GridViewEmployees.DataBind();
-                    databaseObject.CloseConnection();
+                SqlDataAdapter daquery = new SqlDataAdapter(myquerytab);
+                DataSet ds = new DataSet();
+                daquery.Fill(ds);
+                GridViewEmployees.DataSource = ds;
+                GridViewEmployees.DataBind();
+                databaseObject.CloseConnection();
 
             }
             catch (Exception ex)
