@@ -21,9 +21,10 @@
                 <asp:BoundField DataField="Phone" HeaderText="Phone" />
                 <asp:BoundField DataField="HomeAddress" HeaderText="Address" />
                 <asp:BoundField DataField="EmployeeRoute" HeaderText="Route" />
-                <asp:BoundField DataField="AvailableSaturday" HeaderText="Available Saturday" />
-                <asp:BoundField DataField="AvailableSunday" HeaderText="Available Sunday" />
+                <asp:BoundField DataField="AvailableSaturday" HeaderText="Saturday" />
                 <asp:BoundField DataField="ShiftSaturday" HeaderText="Shift Saturday" />
+                <asp:BoundField DataField="AvailableSunday" HeaderText="Sunday" />
+               
                 <asp:BoundField DataField="ShiftSunday" HeaderText="Shift Sunday" />
 
                 </Columns>
@@ -47,8 +48,8 @@
          <div>
             <select class="form-select fs-5" aria-describedby="Day" id="SelectDay" runat="server">
                 <option selected value="">Open select</option>
-                <option value="PROGRAMMED">Saturday</option>
-                <option value="PROGRAMMED">Sunday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
 
             </select>
               <span id="Day" class="form-text fs-5 mt-5 ms-2">Select Day.</span>
@@ -65,9 +66,43 @@
               <span id="Shift" class="form-text fs-5 mt-5 ms-2">Select Shift.</span>
         </div>
 
-          <asp:Button Text="Schedule Employee" ID="buttonSchedule" CssClass="btn btn-primary fs-4" Width="300px" runat="server" />
+          <asp:Button Text="Schedule Employee" ID="buttonSchedule" CssClass="btn btn-primary fs-4" Width="300px" runat="server" OnClick="btnSchedule_Click" />
 
 
      </div>
+
+
+       <div style="height: 30px"></div>
+    <div class="col-12 d-flex justify-content-between my-5">
+        <h1>Programmed Subordinates </h1>
+        <asp:Button Text="Delete Programmed/Reset" ID="buttondeleteProgrammed" CssClass="btn btn-danger fs-5" Width="400px" runat="server" OnClick="btndeleteProgrammed_Click" />
+
+        <asp:Button Text="Refresh" ID="buttonProgrammed" CssClass="btn btn-primary fs-4" Width="220px" runat="server" OnClick="btnProgrammed_Click" />
+
+    </div>
+
+     <%-- Table --%>
+    <div class="row mt-5 mb-4 align-items-center justify-content-center">
+        <div class="col-12 offset-0 text-center">
+            <asp:GridView ID="GridViewProgrammed" class="table table-responsive table-hover wrapword"  runat="server" AutoGenerateColumns="false" OnRowDataBound="GridViewProgrammed_RowDataBound">
+                <HeaderStyle  BackColor="#0d6efd" ForeColor="White" />
+                <Columns>
+                <asp:BoundField DataField="SAPid" HeaderText="SAP ID" />
+                <asp:BoundField DataField="NameandSurname" HeaderText="Full Name" />
+                <asp:BoundField DataField="Department" HeaderText="Department" />
+                <asp:BoundField DataField="Phone" HeaderText="Phone" />
+                <asp:BoundField DataField="HomeAddress" HeaderText="Address" />
+                <asp:BoundField DataField="EmployeeRoute" HeaderText="Route" />
+                <asp:BoundField DataField="AvailableSaturday" HeaderText="Saturday" />
+                <asp:BoundField DataField="ShiftSaturday" HeaderText="Shift Saturday" />
+                <asp:BoundField DataField="AvailableSunday" HeaderText="Sunday" />
+                
+                <asp:BoundField DataField="ShiftSunday" HeaderText="Shift Sunday" />
+
+                </Columns>
+            </asp:GridView>
+        </div>
+
+    </div>
 
 </asp:Content>

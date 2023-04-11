@@ -266,7 +266,7 @@
             <select class="form-select fs-5" aria-label="Select Saturday Status" aria-describedby="StatusHelpInlineMod" id="SelectSaturdayMod" runat="server">
                 <option selected value="">Open select</option>
                 <option value="AVAILABLE">Available</option>
-                <option value="PROGRAMED">Programed</option>
+                <option value="PROGRAMMED">Programmed</option>
                 <option value="BUSY">Busy</option>
             </select>
         </div>
@@ -284,7 +284,7 @@
             <select class="form-select fs-5" aria-label="Select Saturday Status" aria-describedby="StatusHelpInlineMod" id="SelectSundayMod" runat="server">
                 <option selected value="">Open select</option>
                 <option value="AVAILABLE">Available</option>
-                <option value="PROGRAMED">Programed</option>
+                <option value="PROGRAMMED">Programmed</option>
                 <option value="BUSY">Busy</option>
             </select>
         </div>

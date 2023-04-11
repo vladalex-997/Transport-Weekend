@@ -171,7 +171,7 @@ namespace Transport_Weekend
                         string queryup = "UPDATE Employees SET Company = @Company, CNP = @CNP, CostCentre = @CostCentre," +
                             " CostCentreName = @CostCentreName, NameandSurname = @NameandSurname, Deparment = @Deparment, Phone = @Phone," +
                             " HomeAddress = @HomeAddress, UserStatus = @UserStatus," +
-                            " EmployeeRoute = @EmployeeRoute, AvailableSaturday = @SaturdayStaturs, AvailableSunday = @SundayStatus, " +
+                            " EmployeeRoute = @EmployeeRoute, AvailableSaturday = @SaturdayStatus, AvailableSunday = @SundayStatus, " +
                             " ShiftSaturday = @SaturdayShift, ShiftSunday = @SundayShift WHERE SAPid = @SAPid";
                         SqlCommand cmd = new SqlCommand(queryup, databaseObject.myConnection);
                         cmd.Parameters.AddWithValue("@Company", Company);
