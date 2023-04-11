@@ -69,15 +69,6 @@ namespace Transport_Weekend
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuAddModidSOME;
 
         /// <summary>
-        /// menuTemporaryTransport control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuTemporaryTransport;
-
-        /// <summary>
         /// menuReportPage control.
         /// </summary>
         /// <remarks>

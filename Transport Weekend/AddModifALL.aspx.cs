@@ -250,12 +250,12 @@ namespace Transport_Weekend
           
                 try
                 {
-                    string active="ACTIVE";
+                    
                     Database databaseObject = new Database();
                     databaseObject.OpenConnection();
-                    string query = "SELECT * from Users WHERE UserStatus = @Active";
+                    string query = "SELECT * from Users";
                     SqlCommand myquerytab = new SqlCommand(query, databaseObject.myConnection);
-                    myquerytab.Parameters.AddWithValue("@Active", active);
+                    
 
                     SqlDataAdapter daquery = new SqlDataAdapter(myquerytab);
                     DataSet ds = new DataSet();

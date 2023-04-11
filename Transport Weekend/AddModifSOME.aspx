@@ -5,11 +5,11 @@
     <div class="row mt-5 ">
 
         <div class="col-3 offset-0 me-4">
-            <h2>Add Application User</h2>
+            <h2>Add Employee</h2>
         </div>
 
         <div class="col-4 offset-3">
-            <h2>Modify Application User</h2>
+            <h2>Modify Employee</h2>
         </div>
 
     </div>
@@ -257,13 +257,13 @@
     <div class="row my-5 align-items-center">
 
         <%-- ADD USER --%>
-        <div class="col-3 offset-0">
-            <asp:Button Text="Add New User" ID="btnAdd" CssClass="btn btn-primary fs-4" Width="200px" runat="server" OnClick="btnAdd_Click" />
+        <div class="col-3 offset-0 me-4">
+            <asp:Button Text="Add Employee" ID="btnAdd" CssClass="btn btn-primary fs-4" Width="200px" runat="server" OnClick="btnAdd_Click" />
         </div>
 
         <%-- MOD USER --%>
-        <div class="col-3 offset-4">
-            <asp:Button Text="Modify User" ID="btnModif" CssClass="btn btn-primary fs-4" Width="200px" runat="server" OnClick="btnModif_Click" />
+        <div class="col-3 offset-3">
+            <asp:Button Text="Modify Employee" ID="btnModif" CssClass="btn btn-primary fs-4" Width="220px" runat="server" OnClick="btnModif_Click" />
         </div>
 
     </div>
@@ -271,7 +271,7 @@
     <%-- SHOW ALL --%>
     <div class="row mt-5 mb-4 align-items-center">
         <div class="col-2 offset-0 text-center">
-            <asp:Button Text="Show All Users" ID="btnShowAll" CssClass="btn btn-primary fs-4" Width="200px" runat="server" OnClick="btnShowAll_Click" />
+            <asp:Button Text="Show All" ID="btnShowAll" CssClass="btn btn-primary fs-4" Width="200px" runat="server" OnClick="btnShowAll_Click" />
         </div>
     </div>
 
