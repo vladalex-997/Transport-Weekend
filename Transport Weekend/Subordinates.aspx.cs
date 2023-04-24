@@ -250,14 +250,15 @@ namespace Transport_Weekend
 
                 messageBody += htmlTableStart;
                 messageBody += htmlHeaderRowStart;
-                messageBody += htmlTdStart + "Id Record " + htmlTdEnd;
-                messageBody += htmlTdStart + "Nume si Prenume " + htmlTdEnd;
-                messageBody += htmlTdStart + "Carte de identitate " + htmlTdEnd;
-                messageBody += htmlTdStart + "Status Persoana " + htmlTdEnd;
-                messageBody += htmlTdStart + "Ora Programata Venire " + htmlTdEnd;
-                messageBody += htmlTdStart + "Instruire valabila pana la " + htmlTdEnd;
-                messageBody += htmlTdStart + "Status Instruire " + htmlTdEnd;
-                messageBody += htmlTdStart + "Instruit De " + htmlTdEnd;
+                messageBody += htmlTdStart + "Name and Surname " + htmlTdEnd;
+                messageBody += htmlTdStart + "Department " + htmlTdEnd;
+                messageBody += htmlTdStart + "Superior " + htmlTdEnd;
+                messageBody += htmlTdStart + "Route " + htmlTdEnd;
+                messageBody += htmlTdStart + "Available Saturday " + htmlTdEnd;
+                messageBody += htmlTdStart + "Shift Saturday " + htmlTdEnd;
+                messageBody += htmlTdStart + "Available Sunday " + htmlTdEnd;
+                messageBody += htmlTdStart + "Shift Sunday " + htmlTdEnd;
+                messageBody += htmlTdStart + "Phone " + htmlTdEnd;
 
                 messageBody += htmlHeaderRowEnd;
 
@@ -280,6 +281,7 @@ namespace Transport_Weekend
                     messageBody = messageBody + htmlTdStart + table1.Rows[i][5] + htmlTdEnd;
                     messageBody = messageBody + htmlTdStart + table1.Rows[i][6] + htmlTdEnd;
                     messageBody = messageBody + htmlTdStart + table1.Rows[i][7] + htmlTdEnd;
+                    messageBody = messageBody + htmlTdStart + table1.Rows[i][8] + htmlTdEnd;
                     messageBody = messageBody + htmlTrEnd;
                 }
 
@@ -459,32 +461,48 @@ namespace Transport_Weekend
 
                 }
 
+                string queryfilldata = "SELECT NameandSurname,Department,Superior,EmployeeRoute,AvailableSaturday,ShiftSaturday,AvailableSunday,ShiftSunday,Phone from ScheduleTemporary WHERE Superior=@Superior";
+                SqlCommand filldata = new SqlCommand(queryfilldata, databaseObject.myConnection);
+                filldata.Parameters.AddWithValue("@Superior", loggedin);
 
-                //fill la datatable
+                databaseObject.OpenConnection();
 
+                SqlDataAdapter datable = new SqlDataAdapter(filldata);
+                DataTable dttable = new DataTable();
+                datable.Fill(dttable);
 
-                //string Subiect;
-                //string Text;
-                //string Emailget;
-                //string Emailsend;
+                databaseObject.CloseConnection();
 
-                //Subiect = "Weekend Transport Confirmation";
-                //Text = getHtml(dt);
-                
-                ////pe omul logat sa aiba mail
-                //Emailget = "vlad.arsene@marturfompak.com;ovidiu.gionea@marturfompak.com;";
-                //Emailsend = "cristian.nedelea@marturfompak.com";
+                string Subiect;
+                string Text;
+                string Emailget;
+                string Emailsend;
 
-                //Email ema = new Email();
+                Subiect = "Weekend Transport Confirmation";
+                Text = getHtml(dttable);
+                string templogged = loggedin + "@marturfompak.com;";
+               
+                Emailget = "ovidiu.gionea@marturfompak.com";
+                Emailsend = "cristian.nedelea@marturfompak.com";
 
-                //ema.Send(Text, Subiect, Emailsend, Emailget);
+                Email ema = new Email();
 
-                DeleteTemp();
+               var resultmail= ema.Send(Text, Subiect, Emailsend, Emailget);
+
+                //DeleteTemp();
                 RefreshGridAll();
                 RefreshGridProgrammed();
                 ReloadNames();
 
-                MsgBox("List send succesfully", this.Page, this);
+                if (resultmail)
+                {
+                    MsgBox("List send succesfully", this.Page, this);
+                }
+                else
+                {
+                    MsgBox("List send succesfully. Failed to send Email", this.Page, this);
+                }
+                
             }
             catch(Exception ex )
             {
