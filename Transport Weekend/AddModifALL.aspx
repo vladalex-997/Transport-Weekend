@@ -72,7 +72,7 @@
             <input type="text" id="inputNameAdd" class="form-control fs-5" aria-describedby="NameHelpInlineAdd" runat="server" placeholder="Enter Full Name">
         </div>
         <div class="col-2">
-            <span id="NameHelpInlineAdd" class="form-text fs-5">Enter Name.
+            <span id="NameHelpInlineAdd" class="form-text fs-5">Enter Name like in domain (name.surname).
             </span>
         </div>
 
@@ -83,7 +83,7 @@
             <input type="text" id="inputNameMod" class="form-control fs-5" aria-describedby="NameHelpInlineMod" runat="server" placeholder="Enter Full Name">
         </div>
         <div class="col-2">
-            <span id="NameHelpInlineMod" class="form-text fs-5">Enter Name.
+            <span id="NameHelpInlineMod" class="form-text fs-5">Enter Name like in domain (name.surname).
             </span>
         </div>
     </div>

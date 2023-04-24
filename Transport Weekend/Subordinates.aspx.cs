@@ -27,12 +27,17 @@ namespace Transport_Weekend
 
         public void ReloadNames()
         {
+            string loggedinID = Request.Cookies["userdata"].Value;
+            GetUserName getUserName = new GetUserName();
+            string loggedin = getUserName.GetName(loggedinID);
+
             Database databaseObject = new Database();
             databaseObject.OpenConnection();
             string Userstatus = "ACTIVE";
             string available = "AVAILABLE";
-            string query = "SELECT NameandSurname from Employees WHERE UserStatus=@UserStatus AND (AvailableSaturday=@AvailableSaturday OR AvailableSunday=@AvailableSunday)";
+            string query = "SELECT NameandSurname from Employees WHERE UserStatus=@UserStatus AND Superior=@Superior AND (AvailableSaturday=@AvailableSaturday OR AvailableSunday=@AvailableSunday)";
             SqlCommand cmd = new SqlCommand(query, databaseObject.myConnection);
+            cmd.Parameters.AddWithValue("@Superior", loggedin);
             cmd.Parameters.AddWithValue("@UserStatus", Userstatus);
             cmd.Parameters.AddWithValue("@AvailableSaturday", available);
             cmd.Parameters.AddWithValue("@AvailableSunday", available);
@@ -123,10 +128,14 @@ namespace Transport_Weekend
         {
             try
             {
-                Database databaseObject = new Database();
-                string query = "SELECT NameandSurname from ScheduleTemporary";
-                SqlCommand myquerytab = new SqlCommand(query, databaseObject.myConnection);
+                string loggedinID = Request.Cookies["userdata"].Value;
+                GetUserName getUserName = new GetUserName();
+                string loggedin = getUserName.GetName(loggedinID);
 
+                Database databaseObject = new Database();
+                string query = "SELECT NameandSurname from ScheduleTemporary WHERE Superior=@Superior";
+                SqlCommand myquerytab = new SqlCommand(query, databaseObject.myConnection);
+                myquerytab.Parameters.AddWithValue("@Superior",loggedin);
                 databaseObject.OpenConnection();
                 SqlDataAdapter daquery = new SqlDataAdapter(myquerytab);
                 DataTable dt = new DataTable();
@@ -210,10 +219,13 @@ namespace Transport_Weekend
 
         public void DeleteTemp()
         {
+            string loggedinID = Request.Cookies["userdata"].Value;
+            GetUserName getUserName = new GetUserName();
+            string loggedin = getUserName.GetName(loggedinID);
             Database databaseObject= new Database();    
-            string querydel = "DELETE from ScheduleTemporary";
+            string querydel = "DELETE from ScheduleTemporary WHERE Superior=@Superior";
             SqlCommand cmddel = new SqlCommand(querydel, databaseObject.myConnection);
-
+            cmddel.Parameters.AddWithValue("@Superior",loggedin);
             databaseObject.OpenConnection();
             var resu = cmddel.ExecuteNonQuery();
             databaseObject.CloseConnection();
@@ -302,14 +314,16 @@ namespace Transport_Weekend
                 string SaturdayShift = "";
                 string SundayShift = "";
 
-                
 
 
+                string loggedinID = Request.Cookies["userdata"].Value;
+                GetUserName getUserName = new GetUserName();
+                string loggedin = getUserName.GetName(loggedinID);
 
 
-                string querynames = "SELECT NameandSurname from ScheduleTemporary";
+                string querynames = "SELECT NameandSurname from ScheduleTemporary WHERE Superior=@Superior";
                 SqlCommand myquerytab = new SqlCommand(querynames, databaseObject.myConnection);
-
+                myquerytab.Parameters.AddWithValue("@Superior",loggedin);
                 databaseObject.OpenConnection();
                 SqlDataAdapter daquery = new SqlDataAdapter(myquerytab);
                 DataTable dt = new DataTable();
@@ -454,8 +468,10 @@ namespace Transport_Weekend
                 //string Emailget;
                 //string Emailsend;
 
-                //Subiect = "HSE training status - for the people that are coming in the next 7 days";
+                //Subiect = "Weekend Transport Confirmation";
                 //Text = getHtml(dt);
+                
+                ////pe omul logat sa aiba mail
                 //Emailget = "vlad.arsene@marturfompak.com;ovidiu.gionea@marturfompak.com;";
                 //Emailsend = "cristian.nedelea@marturfompak.com";
 
