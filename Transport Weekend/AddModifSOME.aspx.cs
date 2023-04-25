@@ -58,9 +58,9 @@ namespace Transport_Weekend
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-            string loggedin = Request.Cookies["userdata"].Value;
-            //GetUserName getUserName = new GetUserName();
-            //string loggedin = getUserName.GetName(loggedinID);
+            string loggedinID = Request.Cookies["userdata"].Value;
+            GetUserName getUserName = new GetUserName();
+            string loggedin = getUserName.GetName(loggedinID);
 
             try
             {
@@ -146,10 +146,9 @@ namespace Transport_Weekend
             {
                 string Id = inputIdMod.Value;
 
-                string loggedin = Request.Cookies["userdata"].Value;
+                
 
-                if (loggedin != Id)
-                {
+                
                     Database databaseObject = new Database();
                     string Company = SelectCompanyMod.Value;
                     string CNP = inputCNPMod.Value;
@@ -222,11 +221,7 @@ namespace Transport_Weekend
                     {
                         MsgBox("Complete all fields !!!", this.Page, this);
                     }
-                }
-                else
-                {
-                    MsgBox("You cannot modify the logged in user", this.Page, this);
-                }
+               
             }
             catch (Exception ex)
             {
@@ -307,9 +302,9 @@ namespace Transport_Weekend
 
         protected void btnShowAll_Click(object sender, EventArgs e)
         {
-            string loggedin = Request.Cookies["userdata"].Value;
-            //GetUserName getUserName = new GetUserName();
-            //string loggedin = getUserName.GetName(loggedinID);
+            string loggedinID = Request.Cookies["userdata"].Value;
+            GetUserName getUserName = new GetUserName();
+            string loggedin = getUserName.GetName(loggedinID);
             try
             {
                 

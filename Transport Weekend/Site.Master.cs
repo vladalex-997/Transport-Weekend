@@ -38,7 +38,7 @@ namespace Transport_Weekend
                     menuUserCurrent.Visible = true;
                     textPlace.InnerText= "Bun venit, " + tempUserName;
                     menuLogin.Visible = false;
-                    menuSubordinates.Visible = true;
+                    menuSubordinates.Visible = false;
                     menuAddModifALL.Visible = true;
                     menuAddModidSOME.Visible = false;
                     //menuTemporaryTransport.Visible = true;

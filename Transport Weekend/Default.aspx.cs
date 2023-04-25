@@ -75,7 +75,23 @@ namespace Transport_Weekend
                         Response.Cookies.Add(cooku);
                         Session["login"] = UniqueId;
 
-                        Response.Redirect("~/Subordinates.aspx");
+                        string temprole = "";
+
+                        GetPrivilage getPrivilage = new GetPrivilage();
+                       
+
+                        temprole = getPrivilage.GetRights(UniqueId);
+
+                        if (temprole == "ADMIN")
+                        {
+                            Response.Redirect("~/ReportPage.aspx");
+                        }
+                        else
+                        {
+                            Response.Redirect("~/Subordinates.aspx");
+                        }
+
+                       
                         }
                         else
                         {

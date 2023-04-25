@@ -232,6 +232,7 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Email.cs" />
     <Compile Include="GetPrivilage.cs" />
     <Compile Include="GetUserName.cs" />
     <Compile Include="Global.asax.cs">
