@@ -206,7 +206,7 @@ namespace Transport_Weekend
                 DeleteTemp();
                 RefreshGridAll();
                 RefreshGridProgrammed();
-
+                ReloadNames();
                 MsgBox("Deleted Schedules Succesfully", this.Page,this);
 
 
@@ -235,7 +235,8 @@ namespace Transport_Weekend
         {
             try
             {
-                string messageBody = "<font>The following people are going to come on Martur site for different jobs. Please check and be sure about HSE training status and validity date: </font><br><br>";
+                string messageBody = "<center> <h2> Martur Fompak International </h2>  "+ "- Weekend Transport Application - </br></br></br> </center> " + "<center><big> Hello, thank you for booking your transportation.This email is to confirm your reservation details </big> </br>.</center>" + "<center>";
+               
 
                 if (table1.Rows.Count == 0)
                     return messageBody;
@@ -254,9 +255,9 @@ namespace Transport_Weekend
                 messageBody += htmlTdStart + "Department " + htmlTdEnd;
                 messageBody += htmlTdStart + "Superior " + htmlTdEnd;
                 messageBody += htmlTdStart + "Route " + htmlTdEnd;
-                messageBody += htmlTdStart + "Available Saturday " + htmlTdEnd;
+               
                 messageBody += htmlTdStart + "Shift Saturday " + htmlTdEnd;
-                messageBody += htmlTdStart + "Available Sunday " + htmlTdEnd;
+               
                 messageBody += htmlTdStart + "Shift Sunday " + htmlTdEnd;
                 messageBody += htmlTdStart + "Phone " + htmlTdEnd;
 
@@ -280,12 +281,12 @@ namespace Transport_Weekend
                     messageBody = messageBody + htmlTdStart + table1.Rows[i][4] + htmlTdEnd;
                     messageBody = messageBody + htmlTdStart + table1.Rows[i][5] + htmlTdEnd;
                     messageBody = messageBody + htmlTdStart + table1.Rows[i][6] + htmlTdEnd;
-                    messageBody = messageBody + htmlTdStart + table1.Rows[i][7] + htmlTdEnd;
-                    messageBody = messageBody + htmlTdStart + table1.Rows[i][8] + htmlTdEnd;
+                   
                     messageBody = messageBody + htmlTrEnd;
                 }
 
                 messageBody = messageBody + htmlTableEnd;
+                messageBody += "</center></br></br>"+ "<center><big>This email is automatically generated, please do not reply.</big></center>";
                 return messageBody;
             }
             catch (Exception)
@@ -461,7 +462,7 @@ namespace Transport_Weekend
 
                 }
 
-                string queryfilldata = "SELECT NameandSurname,Department,Superior,EmployeeRoute,AvailableSaturday,ShiftSaturday,AvailableSunday,ShiftSunday,Phone from ScheduleTemporary WHERE Superior=@Superior";
+                string queryfilldata = "SELECT NameandSurname,Department,Superior,EmployeeRoute,ShiftSaturday,ShiftSunday,Phone from ScheduleTemporary WHERE Superior=@Superior";
                 SqlCommand filldata = new SqlCommand(queryfilldata, databaseObject.myConnection);
                 filldata.Parameters.AddWithValue("@Superior", loggedin);
 
@@ -480,16 +481,17 @@ namespace Transport_Weekend
 
                 Subiect = "Weekend Transport Confirmation";
                 Text = getHtml(dttable);
+               
                 string templogged = loggedin + "@marturfompak.com;";
                
-                Emailget = "ovidiu.gionea@marturfompak.com";
-                Emailsend = "cristian.nedelea@marturfompak.com";
+                Emailsend = templogged+ "ovidiu.gionea@marturfompak.com";
+                Emailget = "cristian.nedelea@marturfompak.com";
 
                 Email ema = new Email();
 
                var resultmail= ema.Send(Text, Subiect, Emailsend, Emailget);
 
-                //DeleteTemp();
+                DeleteTemp();
                 RefreshGridAll();
                 RefreshGridProgrammed();
                 ReloadNames();
