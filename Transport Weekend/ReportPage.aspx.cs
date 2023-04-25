@@ -406,5 +406,58 @@ namespace Transport_Weekend
             ClientScriptManager cs = pg.ClientScript;
             cs.RegisterClientScriptBlock(cstype, s, s.ToString());
         }
+
+        protected void GridViewRaport_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                if ((e.Row.Cells[11].Text).ToUpper() == "AVAILABLE")
+                {
+                    e.Row.Cells[11].BackColor = System.Drawing.Color.LightGreen;
+                }
+                else if ((e.Row.Cells[11].Text).ToUpper() == "BUSY")
+                {
+                    e.Row.Cells[11].BackColor = System.Drawing.Color.Red;
+                }
+                else if ((e.Row.Cells[11].Text).ToUpper() == "PROGRAMMED")
+                {
+                    e.Row.Cells[11].BackColor = System.Drawing.Color.Yellow;
+                }
+
+
+                if ((e.Row.Cells[13].Text).ToUpper() == "AVAILABLE")
+                {
+                    e.Row.Cells[13].BackColor = System.Drawing.Color.LightGreen;
+                }
+                else if ((e.Row.Cells[13].Text).ToUpper() == "BUSY")
+                {
+                    e.Row.Cells[13].BackColor = System.Drawing.Color.Red;
+                }
+                else if ((e.Row.Cells[13].Text).ToUpper() == "PROGRAMMED")
+                {
+                    e.Row.Cells[13].BackColor = System.Drawing.Color.Yellow;
+                }
+
+
+                if ((e.Row.Cells[12].Text).ToUpper() == "NONE")
+                {
+                    e.Row.Cells[12].BackColor = System.Drawing.Color.LightGreen;
+                }
+                else
+                {
+                    e.Row.Cells[12].BackColor = System.Drawing.Color.Yellow;
+                }
+
+
+                if ((e.Row.Cells[14].Text).ToUpper() == "NONE")
+                {
+                    e.Row.Cells[14].BackColor = System.Drawing.Color.LightGreen;
+                }
+                else
+                {
+                    e.Row.Cells[14].BackColor = System.Drawing.Color.Yellow;
+                }
+            }
+        }
     }
 }

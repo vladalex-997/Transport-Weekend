@@ -12,7 +12,7 @@
      <%-- Table --%>
     <div class="row mt-5 mb-4 align-items-center justify-content-center">
         <div class="col-12 offset-0 text-center">
-            <asp:GridView ID="GridViewEmployees" class="table table-responsive table-hover wrapword"  runat="server" AutoGenerateColumns="false" OnRowDataBound="GridViewEmployees_RowDataBound">
+            <asp:GridView ID="GridViewEmployees" class="table table-responsive table-hover table-bordered wrapword"  runat="server" AutoGenerateColumns="false" OnRowDataBound="GridViewEmployees_RowDataBound">
                 <HeaderStyle  BackColor="#0d6efd" ForeColor="White" />
                 <Columns>
                 <asp:BoundField DataField="SAPid" HeaderText="SAP ID" />

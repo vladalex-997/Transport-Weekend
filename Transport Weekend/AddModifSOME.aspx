@@ -334,8 +334,8 @@
         <div class="col-3 offset-0 me-4">
         </div>
         <%-- MOD USER --%>
-        <div class="col-3 offset-3">
-            <asp:Button Text="Modify Employee" ID="btnModif" CssClass="btn btn-primary fs-4" Width="220px" runat="server" OnClick="btnModif_Click" />
+        <div class="col-3 offset-3 d-flex justify-content-start">
+            <asp:Button Text="Modify Employee" ID="btnModif" CssClass="btn btn-primary fs-4" Width="250px" runat="server" OnClick="btnModif_Click" />
         </div>
 
     </div>
