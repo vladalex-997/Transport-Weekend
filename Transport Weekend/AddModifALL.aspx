@@ -248,9 +248,12 @@
         </div>
     </div>
 
+    
     <div class="row mt-5 mb-4 align-items-center justify-content-center">
+       
         <div class="col-12 offset-0 text-center">
-            <asp:GridView ID="GridViewUsers" class="table table-responsive table-hover wrapword"  runat="server" AutoGenerateColumns="false">
+             <div style="overflow-x:auto;width:1320px;height:200px;">
+            <asp:GridView ID="GridViewUsers" class="table table-responsive table-hover"  runat="server" AutoGenerateColumns="false">
                 <HeaderStyle  BackColor="#0d6efd" ForeColor="White" />
                 <Columns>
                 <asp:BoundField DataField="UniqueId" HeaderText="SAP ID" />
@@ -262,6 +265,7 @@
                 <asp:BoundField DataField="Company" HeaderText="Company" />
                 </Columns>
             </asp:GridView>
+                 </div>
         </div>
 
     </div>

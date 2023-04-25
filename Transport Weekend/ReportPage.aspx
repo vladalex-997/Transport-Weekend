@@ -81,7 +81,7 @@
     <div class="row mt-5 mb-4 ">
         <%-- Table --%>
       
-  <div style="overflow-x:auto;width:1800px">
+  <div style="overflow-x:auto;width:1320px;height:200px;">
   
 
         

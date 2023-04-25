@@ -351,7 +351,8 @@
     <%-- Table --%>
     <div class="row mt-5 mb-4 align-items-center justify-content-center">
         <div class="col-12 offset-0 text-center">
-            <asp:GridView ID="GridViewEmployees" class="table table-responsive table-hover wrapword"  runat="server" AutoGenerateColumns="false">
+             <div style="overflow-x:auto;width:1320px;height:200px;">
+            <asp:GridView ID="GridViewEmployees" class="table table-responsive table-hover"  runat="server" AutoGenerateColumns="false">
                 <HeaderStyle  BackColor="#0d6efd" ForeColor="White" />
                 <Columns>
                 <asp:BoundField DataField="Company" HeaderText="Company" />
@@ -367,6 +368,7 @@
                 <asp:BoundField DataField="EmployeeRoute" HeaderText="Route" />
                 </Columns>
             </asp:GridView>
+                 </div>
         </div>
 
     </div>

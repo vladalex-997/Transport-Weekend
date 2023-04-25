@@ -12,7 +12,8 @@
      <%-- Table --%>
     <div class="row mt-5 mb-4 align-items-center justify-content-center">
         <div class="col-12 offset-0 text-center">
-            <asp:GridView ID="GridViewEmployees" class="table table-responsive table-hover table-bordered wrapword"  runat="server" AutoGenerateColumns="false" OnRowDataBound="GridViewEmployees_RowDataBound">
+             <div style="overflow-x:auto;width:1320px;height:200px;">
+            <asp:GridView ID="GridViewEmployees" class="table table-responsive table-hover table-bordered"  runat="server" AutoGenerateColumns="false" OnRowDataBound="GridViewEmployees_RowDataBound">
                 <HeaderStyle  BackColor="#0d6efd" ForeColor="White" />
                 <Columns>
                 <asp:BoundField DataField="SAPid" HeaderText="SAP ID" />
@@ -29,6 +30,7 @@
 
                 </Columns>
             </asp:GridView>
+                 </div>
         </div>
 
     </div>
@@ -91,6 +93,7 @@
      <%-- Table --%>
     <div class="row mt-5 mb-4 align-items-center justify-content-center">
         <div class="col-12 offset-0 text-center">
+             <div style="overflow-x:auto;width:1320px;height:200px;">
             <asp:GridView ID="GridViewProgrammed" class="table table-responsive table-hover wrapword"  runat="server" AutoGenerateColumns="false" OnRowDataBound="GridViewProgrammed_RowDataBound">
                 <HeaderStyle  BackColor="#0d6efd" ForeColor="White" />
                 <Columns>
@@ -108,6 +111,7 @@
 
                 </Columns>
             </asp:GridView>
+                 </div>
         </div>
 
     </div>
