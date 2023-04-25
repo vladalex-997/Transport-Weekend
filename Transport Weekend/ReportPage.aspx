@@ -67,9 +67,16 @@
         
         <%-- Export Excel --%>
         <div class="col-1 offset-1">
-            <asp:Button Text="Export" ID="btnExport" CssClass="btn btn-primary fs-4" Width="200px" runat="server" OnClick="btnShowAll_Click" />
+            <asp:Button Text="Export" ID="btnExport" CssClass="btn btn-primary fs-4" Width="200px" runat="server" OnClick="btnExport_Click" />
+        </div>
+
+        <%-- Reset Fields --%>
+        <div class="col-1 offset-1">
+            <asp:Button Text="Reset Fields" ID="btnReset" CssClass="btn btn-primary fs-4" Width="200px" runat="server" OnClick="btnReset_Click" />
         </div>
     </div>
+
+    
         
     <div class="row mt-5 mb-4 align-items-center">
         <%-- Table --%>

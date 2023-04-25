@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
+using System.IO;
 
 namespace Transport_Weekend
 {
@@ -43,33 +44,39 @@ namespace Transport_Weekend
             }
         }
 
-        protected void btnShowAll_Click(object sender, EventArgs e)
+        protected void btnReset_Click(object sender, EventArgs e)
         {
-            string loggedin = Request.Cookies["userdata"].Value;
-            //GetUserName getUserName = new GetUserName();
-            //string loggedin = getUserName.GetName(loggedinID);
-            try
-            {
+            inputShiftLeaderSearch.Value = "";
+            inputSubordinateSearch.Value = "";
+            SelectDaySearch.Value = "";
+            SelectShiftSearch.Value = "";
+            SelectRouteSearch.Value = "";
+        }
 
-                Database databaseObject = new Database();
-                databaseObject.OpenConnection();
-                string query = "SELECT * FROM DefinitiveSchedule WHERE AvailableSaturday=@Busy OR AvailableSunday=@Busy";
-                SqlCommand myquerytab = new SqlCommand(query, databaseObject.myConnection);
-                myquerytab.Parameters.AddWithValue("@Busy", "BUSY");
+        public override void VerifyRenderingInServerForm(Control control)
+        {
+            //required to avoid the run time error "  
+            //Control 'GridView1' of type 'Grid View' must be placed inside a form tag with runat=server."  
+        }
 
-
-                SqlDataAdapter daquery = new SqlDataAdapter(myquerytab);
-                DataSet ds = new DataSet();
-                daquery.Fill(ds);
-                GridViewRaport.DataSource = ds;
-                GridViewRaport.DataBind();
-                databaseObject.CloseConnection();
-
-            }
-            catch (Exception ex)
-            {
-                MsgBox(ex.ToString(), this.Page, this);
-            }
+        protected void btnExport_Click(object sender, EventArgs e)
+        {
+            Response.Clear();
+            Response.Buffer = true;
+            Response.ClearContent();
+            Response.ClearHeaders();
+            Response.Charset = "";
+            string FileName = "Raport_" + DateTime.Now.ToString("dd.MM.yyyy") + ".xls";
+            StringWriter strwritter = new StringWriter();
+            HtmlTextWriter htmltextwrtter = new HtmlTextWriter(strwritter);
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.ContentType = "application/vnd.ms-excel";
+            Response.AddHeader("Content-Disposition", "attachment;filename=" + FileName);
+            GridViewRaport.GridLines = GridLines.Both;
+            GridViewRaport.HeaderStyle.Font.Bold = true;
+            GridViewRaport.RenderControl(htmltextwrtter);
+            Response.Write(strwritter.ToString());
+            Response.End();
         }
 
         protected void btnShowFilter_Click(object sender, EventArgs e)
@@ -201,11 +208,11 @@ namespace Transport_Weekend
             {
                 if (Day == "SATURDAY")
                 {
-                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE ShiftSaturday = @ShiftSaturday  OR ShiftSunday = @ShiftSunday AND AvailableSaturday = @Busy"; //  Day + Shift
+                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE ShiftSaturday = @ShiftSaturday AND AvailableSaturday = @Busy"; //  Day + Shift
                 }
                 else if (Day == "SUNDAY")
                 {
-                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE ShiftSaturday = @ShiftSaturday  OR ShiftSunday = @ShiftSunday AND AvailableSunday = @Busy"; // Day + Shift
+                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE ShiftSunday = @ShiftSunday AND AvailableSunday = @Busy"; // Day + Shift
                 }
             }
             else if (v15)
@@ -246,11 +253,11 @@ namespace Transport_Weekend
             {
                 if (Day == "SATURDAY")
                 {
-                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE Superior LIKE @ShiftLeader AND ShiftSaturday = @ShiftSaturday  OR ShiftSunday = @ShiftSunday AND AvailableSaturday = @Busy"; // ShiftLeader + Day + Shift
+                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE Superior LIKE @ShiftLeader AND ShiftSaturday = @ShiftSaturday AND AvailableSaturday = @Busy"; // ShiftLeader + Day + Shift
                 }
                 else if (Day == "SUNDAY")
                 {
-                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE Superior LIKE @ShiftLeader AND ShiftSaturday = @ShiftSaturday  OR ShiftSunday = @ShiftSunday AND AvailableSunday = @Busy"; // ShiftLeader + Day + Shift
+                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE Superior LIKE @ShiftLeader AND ShiftSunday = @ShiftSunday AND AvailableSunday = @Busy"; // ShiftLeader + Day + Shift
                 }
             }
             else if (v21)
@@ -272,11 +279,11 @@ namespace Transport_Weekend
             {
                 if (Day == "SATURDAY")
                 {
-                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE NameandSurname LIKE @Subordinate AND ShiftSaturday = @ShiftSaturday  OR ShiftSunday = @ShiftSunday AND AvailableSaturday = @Busy"; // Subordinate + Day + Shift
+                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE NameandSurname LIKE @Subordinate AND ShiftSaturday = @ShiftSaturday AND AvailableSaturday = @Busy"; // Subordinate + Day + Shift
                 }
                 else if (Day == "SUNDAY")
                 {
-                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE NameandSurname LIKE @Subordinate AND ShiftSaturday = @ShiftSaturday  OR ShiftSunday = @ShiftSunday AND AvailableSunday = @Busy"; // Subordinate + Day + Shift
+                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE NameandSurname LIKE @Subordinate AND ShiftSunday = @ShiftSunday AND AvailableSunday = @Busy"; // Subordinate + Day + Shift
                 }
             }
             else if (v24)
@@ -298,22 +305,22 @@ namespace Transport_Weekend
             {
                 if (Day == "SATURDAY")
                 {
-                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE ShiftSaturday = @ShiftSaturday  OR ShiftSunday = @ShiftSunday AND EmployeeRoute LIKE @Route AND AvailableSaturday = @Busy"; // Day + Shift + Route
+                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE ShiftSaturday = @ShiftSaturday AND EmployeeRoute LIKE @Route AND AvailableSaturday = @Busy"; // Day + Shift + Route
                 }
                 else if (Day == "SUNDAY")
                 {
-                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE ShiftSaturday = @ShiftSaturday  OR ShiftSunday = @ShiftSunday AND EmployeeRoute LIKE @Route AND AvailableSunday = @Busy"; // Day + Shift + Route
+                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE ShiftSunday = @ShiftSunday AND EmployeeRoute LIKE @Route AND AvailableSunday = @Busy"; // Day + Shift + Route
                 } 
             }
             else if (v27)
             {
                 if (Day == "SATURDAY")
                 {
-                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE Superior LIKE @ShiftLeader AND NameandSurname LIKE @Subordinate AND ShiftSaturday = @ShiftSaturday  OR ShiftSunday = @ShiftSunday AND AvailableSaturday = @Busy"; // ShiftLeader + Subordinate + Day + Shift
+                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE Superior LIKE @ShiftLeader AND NameandSurname LIKE @Subordinate AND ShiftSaturday = @ShiftSaturday AND AvailableSaturday = @Busy"; // ShiftLeader + Subordinate + Day + Shift
                 }
                 else if (Day == "SUNDAY")
                 {
-                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE Superior LIKE @ShiftLeader AND NameandSurname LIKE @Subordinate AND ShiftSaturday = @ShiftSaturday  OR ShiftSunday = @ShiftSunday AND AvailableSunday = @Busy"; // ShiftLeader + Subordinate + Day + Shift
+                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE Superior LIKE @ShiftLeader AND NameandSurname LIKE @Subordinate AND ShiftSunday = @ShiftSunday AND AvailableSunday = @Busy"; // ShiftLeader + Subordinate + Day + Shift
                 }
             }
             else if (v28)
@@ -335,33 +342,33 @@ namespace Transport_Weekend
             {
                 if (Day == "SATURDAY")
                 {
-                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE Superior LIKE @ShiftLeader AND ShiftSaturday = @ShiftSaturday  OR ShiftSunday = @ShiftSunday AND EmployeeRoute LIKE @Route AND AvailableSaturday = @Busy"; // ShiftLeader + Day + Shift + Route
+                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE Superior LIKE @ShiftLeader AND ShiftSaturday = @ShiftSaturday AND EmployeeRoute LIKE @Route AND AvailableSaturday = @Busy"; // ShiftLeader + Day + Shift + Route
                 }
                 else if (Day == "SUNDAY")
                 {
-                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE Superior LIKE @ShiftLeader AND ShiftSaturday = @ShiftSaturday  OR ShiftSunday = @ShiftSunday AND EmployeeRoute LIKE @Route AND AvailableSunday = @Busy"; // ShiftLeader + Day + Shift + Route
+                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE Superior LIKE @ShiftLeader AND ShiftSunday = @ShiftSunday AND EmployeeRoute LIKE @Route AND AvailableSunday = @Busy"; // ShiftLeader + Day + Shift + Route
                 } 
             }
             else if (v31)
             {
                 if (Day == "SATURDAY")
                 {
-                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE NameandSurname LIKE @Subordinate AND ShiftSaturday = @ShiftSaturday  OR ShiftSunday = @ShiftSunday AND EmployeeRoute LIKE @Route AND AvailableSaturday = @Busy"; // Subordinate + Day + Shift + Route
+                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE NameandSurname LIKE @Subordinate AND ShiftSaturday = @ShiftSaturday AND EmployeeRoute LIKE @Route AND AvailableSaturday = @Busy"; // Subordinate + Day + Shift + Route
                 }
                 else if (Day == "SUNDAY")
                 {
-                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE NameandSurname LIKE @Subordinate AND ShiftSaturday = @ShiftSaturday  OR ShiftSunday = @ShiftSunday AND EmployeeRoute LIKE @Route AND AvailableSunday = @Busy"; // Subordinate + Day + Shift + Route
+                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE NameandSurname LIKE @Subordinate AND ShiftSunday = @ShiftSunday AND EmployeeRoute LIKE @Route AND AvailableSunday = @Busy"; // Subordinate + Day + Shift + Route
                 }
             }
             else if (v32)
             {
                 if (Day == "SATURDAY")
                 {
-                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE NameandSurname LIKE @Subordinate AND Superior LIKE @ShiftLeader AND ShiftSaturday = @ShiftSaturday  OR ShiftSunday = @ShiftSunday AND EmployeeRoute LIKE @Route AND AvailableSaturday = @Busy"; // ShiftLeader + Subordinate + Day + Shift + Route
+                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE NameandSurname LIKE @Subordinate AND Superior LIKE @ShiftLeader AND ShiftSunday = @ShiftSunday AND EmployeeRoute LIKE @Route AND AvailableSaturday = @Busy"; // ShiftLeader + Subordinate + Day + Shift + Route
                 }
                 else if (Day == "SUNDAY")
                 {
-                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE NameandSurname LIKE @Subordinate AND Superior LIKE @ShiftLeader AND ShiftSaturday = @ShiftSaturday  OR ShiftSunday = @ShiftSunday AND EmployeeRoute LIKE @Route AND AvailableSunday = @Busy"; // ShiftLeader + Subordinate + Day + Shift + Route
+                    queryfin = "SELECT * FROM DefinitiveSchedule WHERE NameandSurname LIKE @Subordinate AND Superior LIKE @ShiftLeader AND ShiftSaturday = @ShiftSaturday AND EmployeeRoute LIKE @Route AND AvailableSunday = @Busy"; // ShiftLeader + Subordinate + Day + Shift + Route
                 }
             }
             else
