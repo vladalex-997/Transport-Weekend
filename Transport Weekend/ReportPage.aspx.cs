@@ -34,6 +34,7 @@ namespace Transport_Weekend
                     SelectRouteSearch.DataValueField = ds.Tables[0].Columns["RouteName"].ToString();
 
                     SelectRouteSearch.DataBind();
+                    SelectRouteSearch.Items.Insert(0, "Open Select");
 
                     databaseObject.CloseConnection();
                 }
@@ -50,7 +51,7 @@ namespace Transport_Weekend
             inputSubordinateSearch.Value = "";
             SelectDaySearch.Value = "";
             SelectShiftSearch.Value = "";
-            SelectRouteSearch.Value = "";
+            SelectRouteSearch.Value = "Open Select";
         }
 
         public override void VerifyRenderingInServerForm(Control control)
@@ -88,48 +89,48 @@ namespace Transport_Weekend
             string Route = SelectRouteSearch.Value;
             string queryfin = "";
 
-            var v1 = (ShiftLeader == "" && Subordinate == "" && Day == "" && Shift == "" && Route == ""); // ALL EMPTY
+            var v1 = (ShiftLeader == "" && Subordinate == "" && Day == "" && Shift == "" && Route == "Open Select"); // ALL EMPTY
 
-            var v2 = (ShiftLeader != "" && Subordinate == "" && Day == "" && Shift == "" && Route == ""); // ShiftLeader
-            var v3 = (ShiftLeader == "" && Subordinate != "" && Day == "" && Shift == "" && Route == ""); // Subordinate
-            var v4 = (ShiftLeader == "" && Subordinate == "" && Day != "" && Shift == "" && Route == ""); // Day
-            var v5 = (ShiftLeader == "" && Subordinate == "" && Day == "" && Shift != "" && Route == ""); // Shift
-            var v6 = (ShiftLeader == "" && Subordinate == "" && Day == "" && Shift == "" && Route != ""); // Route
+            var v2 = (ShiftLeader != "" && Subordinate == "" && Day == "" && Shift == "" && Route == "Open Select"); // ShiftLeader
+            var v3 = (ShiftLeader == "" && Subordinate != "" && Day == "" && Shift == "" && Route == "Open Select"); // Subordinate
+            var v4 = (ShiftLeader == "" && Subordinate == "" && Day != "" && Shift == "" && Route == "Open Select"); // Day
+            var v5 = (ShiftLeader == "" && Subordinate == "" && Day == "" && Shift != "" && Route == "Open Select"); // Shift
+            var v6 = (ShiftLeader == "" && Subordinate == "" && Day == "" && Shift == "" && Route != "Open Select"); // Route
 
-            var v7 = (ShiftLeader != "" && Subordinate != "" && Day == "" && Shift == "" && Route == ""); // ShiftLeader + Subordinate
-            var v8 = (ShiftLeader != "" && Subordinate == "" && Day != "" && Shift == "" && Route == ""); // ShiftLeader + Day
-            var v9 = (ShiftLeader != "" && Subordinate == "" && Day == "" && Shift != "" && Route == ""); // ShiftLeader + Shift
-            var v10 = (ShiftLeader != "" && Subordinate == "" && Day == "" && Shift == "" && Route != ""); // ShiftLeader + Route
+            var v7 = (ShiftLeader != "" && Subordinate != "" && Day == "" && Shift == "" && Route == "Open Select"); // ShiftLeader + Subordinate
+            var v8 = (ShiftLeader != "" && Subordinate == "" && Day != "" && Shift == "" && Route == "Open Select"); // ShiftLeader + Day
+            var v9 = (ShiftLeader != "" && Subordinate == "" && Day == "" && Shift != "" && Route == "Open Select"); // ShiftLeader + Shift
+            var v10 = (ShiftLeader != "" && Subordinate == "" && Day == "" && Shift == "" && Route != "Open Select"); // ShiftLeader + Route
 
-            var v11 = (ShiftLeader == "" && Subordinate != "" && Day != "" && Shift == "" && Route == ""); // Subordinate + Day
-            var v12 = (ShiftLeader == "" && Subordinate != "" && Day == "" && Shift != "" && Route == ""); // Subordinate + Shift
-            var v13 = (ShiftLeader == "" && Subordinate != "" && Day == "" && Shift == "" && Route != ""); // Subordinate + Route
+            var v11 = (ShiftLeader == "" && Subordinate != "" && Day != "" && Shift == "" && Route == "Open Select"); // Subordinate + Day
+            var v12 = (ShiftLeader == "" && Subordinate != "" && Day == "" && Shift != "" && Route == "Open Select"); // Subordinate + Shift
+            var v13 = (ShiftLeader == "" && Subordinate != "" && Day == "" && Shift == "" && Route != "Open Select"); // Subordinate + Route
 
-            var v14 = (ShiftLeader == "" && Subordinate == "" && Day != "" && Shift != "" && Route == ""); // Day + Shift
-            var v15 = (ShiftLeader == "" && Subordinate == "" && Day != "" && Shift == "" && Route != ""); // Day + Route
+            var v14 = (ShiftLeader == "" && Subordinate == "" && Day != "" && Shift != "" && Route == "Open Select"); // Day + Shift
+            var v15 = (ShiftLeader == "" && Subordinate == "" && Day != "" && Shift == "" && Route != "Open Select"); // Day + Route
 
-            var v16 = (ShiftLeader == "" && Subordinate == "" && Day == "" && Shift != "" && Route != ""); // Shift + Route
+            var v16 = (ShiftLeader == "" && Subordinate == "" && Day == "" && Shift != "" && Route != "Open Select"); // Shift + Route
 
-            var v17 = (ShiftLeader != "" && Subordinate != "" && Day != "" && Shift == "" && Route == ""); // ShiftLeader + Subordinate + Day
-            var v18 = (ShiftLeader != "" && Subordinate != "" && Day == "" && Shift != "" && Route == ""); // ShiftLeader + Subordinate + Shift
-            var v19 = (ShiftLeader != "" && Subordinate != "" && Day == "" && Shift == "" && Route != ""); // ShiftLeader + Subordinate + Route
-            var v20 = (ShiftLeader != "" && Subordinate == "" && Day != "" && Shift != "" && Route == ""); // ShiftLeader + Day + Shift
-            var v21 = (ShiftLeader != "" && Subordinate == "" && Day != "" && Shift == "" && Route != ""); // ShiftLeader + Day + Route
-            var v22 = (ShiftLeader != "" && Subordinate == "" && Day == "" && Shift != "" && Route != ""); // ShiftLeader + Shift + Route
+            var v17 = (ShiftLeader != "" && Subordinate != "" && Day != "" && Shift == "" && Route == "Open Select"); // ShiftLeader + Subordinate + Day
+            var v18 = (ShiftLeader != "" && Subordinate != "" && Day == "" && Shift != "" && Route == "Open Select"); // ShiftLeader + Subordinate + Shift
+            var v19 = (ShiftLeader != "" && Subordinate != "" && Day == "" && Shift == "" && Route != "Open Select"); // ShiftLeader + Subordinate + Route
+            var v20 = (ShiftLeader != "" && Subordinate == "" && Day != "" && Shift != "" && Route == "Open Select"); // ShiftLeader + Day + Shift
+            var v21 = (ShiftLeader != "" && Subordinate == "" && Day != "" && Shift == "" && Route == "Open Select"); // ShiftLeader + Day + Route
+            var v22 = (ShiftLeader != "" && Subordinate == "" && Day == "" && Shift != "" && Route == "Open Select"); // ShiftLeader + Shift + Route
 
-            var v23 = (ShiftLeader == "" && Subordinate != "" && Day != "" && Shift != "" && Route == ""); // Subordinate + Day + Shift
-            var v24 = (ShiftLeader == "" && Subordinate != "" && Day != "" && Shift == "" && Route != ""); // Subordinate + Day + Route
-            var v25 = (ShiftLeader == "" && Subordinate != "" && Day == "" && Shift != "" && Route != ""); // Subordinate + Shift + Route
+            var v23 = (ShiftLeader == "" && Subordinate != "" && Day != "" && Shift != "" && Route == "Open Select"); // Subordinate + Day + Shift
+            var v24 = (ShiftLeader == "" && Subordinate != "" && Day != "" && Shift == "" && Route == "Open Select"); // Subordinate + Day + Route
+            var v25 = (ShiftLeader == "" && Subordinate != "" && Day == "" && Shift != "" && Route == "Open Select"); // Subordinate + Shift + Route
 
-            var v26 = (ShiftLeader == "" && Subordinate == "" && Day != "" && Shift != "" && Route != ""); // Day + Shift + Route
+            var v26 = (ShiftLeader == "" && Subordinate == "" && Day != "" && Shift != "" && Route == "Open Select"); // Day + Shift + Route
 
-            var v27 = (ShiftLeader != "" && Subordinate != "" && Day != "" && Shift != "" && Route == ""); // ShiftLeader + Subordinate + Day + Shift
-            var v28 = (ShiftLeader != "" && Subordinate != "" && Day != "" && Shift == "" && Route != ""); // ShiftLeader + Subordinate + Day + Route
-            var v29 = (ShiftLeader != "" && Subordinate != "" && Day == "" && Shift != "" && Route != ""); // ShiftLeader + Subordinate + Shift + Route
-            var v30 = (ShiftLeader != "" && Subordinate == "" && Day != "" && Shift != "" && Route != ""); // ShiftLeader + Day + Shift + Route
-            var v31 = (ShiftLeader == "" && Subordinate != "" && Day != "" && Shift != "" && Route != ""); // Subordinate + Day + Shift + Route
+            var v27 = (ShiftLeader != "" && Subordinate != "" && Day != "" && Shift != "" && Route == "Open Select"); // ShiftLeader + Subordinate + Day + Shift
+            var v28 = (ShiftLeader != "" && Subordinate != "" && Day != "" && Shift == "" && Route == "Open Select"); // ShiftLeader + Subordinate + Day + Route
+            var v29 = (ShiftLeader != "" && Subordinate != "" && Day == "" && Shift != "" && Route == "Open Select"); // ShiftLeader + Subordinate + Shift + Route
+            var v30 = (ShiftLeader != "" && Subordinate == "" && Day != "" && Shift != "" && Route == "Open Select"); // ShiftLeader + Day + Shift + Route
+            var v31 = (ShiftLeader == "" && Subordinate != "" && Day != "" && Shift != "" && Route == "Open Select"); // Subordinate + Day + Shift + Route
 
-            var v32 = (ShiftLeader != "" && Subordinate != "" && Day != "" && Shift != "" && Route != ""); // ALL FILLED
+            var v32 = (ShiftLeader != "" && Subordinate != "" && Day != "" && Shift != "" && Route == "Open Select"); // ALL FILLED
 
             if (v1)
             {
