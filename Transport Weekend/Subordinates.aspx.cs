@@ -18,7 +18,7 @@ namespace Transport_Weekend
             {
                 RefreshGridAll();
                 RefreshGridProgrammed();
-
+                ReloadDelete();
                 ReloadNames();
                 
             }
@@ -54,6 +54,35 @@ namespace Transport_Weekend
             databaseObject.CloseConnection();
         }
 
+        public void ReloadDelete()
+        {
+
+            string loggedinID = Request.Cookies["userdata"].Value;
+            GetUserName getUserName = new GetUserName();
+            string loggedin = getUserName.GetName(loggedinID);
+
+            Database databaseObject = new Database();
+            databaseObject.OpenConnection();
+            string Userstatus = "ACTIVE";
+            string available = "PROGRAMMED";
+            string query = "SELECT NameandSurname from Employees WHERE UserStatus=@UserStatus AND Superior=@Superior AND (AvailableSaturday=@AvailableSaturday OR AvailableSunday=@AvailableSunday)";
+            SqlCommand cmd = new SqlCommand(query, databaseObject.myConnection);
+            cmd.Parameters.AddWithValue("@Superior", loggedin);
+            cmd.Parameters.AddWithValue("@UserStatus", Userstatus);
+            cmd.Parameters.AddWithValue("@AvailableSaturday", available);
+            cmd.Parameters.AddWithValue("@AvailableSunday", available);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+
+            SelectDel.DataSource = ds.Tables[0];
+            SelectDel.DataTextField = ds.Tables[0].Columns["NameandSurname"].ToString();
+            SelectDel.DataValueField = ds.Tables[0].Columns["NameandSurname"].ToString();
+
+            SelectDel.DataBind();
+
+            databaseObject.CloseConnection();
+        }
         public void RefreshGridAll()
         {
             string loggedinID = Request.Cookies["userdata"].Value;
@@ -122,6 +151,7 @@ namespace Transport_Weekend
         protected void btnProgrammed_Click(object sender, EventArgs e)
         {
             RefreshGridProgrammed();
+            ReloadDelete();
         }
 
         protected void btndeleteProgrammed_Click(object sender, EventArgs e)
@@ -207,6 +237,7 @@ namespace Transport_Weekend
                 RefreshGridAll();
                 RefreshGridProgrammed();
                 ReloadNames();
+                ReloadDelete();
                 MsgBox("Deleted Schedules Succesfully", this.Page,this);
 
 
@@ -226,6 +257,22 @@ namespace Transport_Weekend
             string querydel = "DELETE from ScheduleTemporary WHERE Superior=@Superior";
             SqlCommand cmddel = new SqlCommand(querydel, databaseObject.myConnection);
             cmddel.Parameters.AddWithValue("@Superior",loggedin);
+            databaseObject.OpenConnection();
+            var resu = cmddel.ExecuteNonQuery();
+            databaseObject.CloseConnection();
+        }
+
+        public void DeleteOne()
+        {
+            string loggedinID = Request.Cookies["userdata"].Value;
+            GetUserName getUserName = new GetUserName();
+            string loggedin = getUserName.GetName(loggedinID);
+            Database databaseObject = new Database();
+            string name = SelectDel.Value;
+            string querydel = "DELETE from ScheduleTemporary WHERE Superior=@Superior AND NameandSurname=@NameandSurname";
+            SqlCommand cmddel = new SqlCommand(querydel, databaseObject.myConnection);
+            cmddel.Parameters.AddWithValue("@Superior", loggedin);
+            cmddel.Parameters.AddWithValue("@NameandSurname",name);
             databaseObject.OpenConnection();
             var resu = cmddel.ExecuteNonQuery();
             databaseObject.CloseConnection();
@@ -495,6 +542,7 @@ namespace Transport_Weekend
                 RefreshGridAll();
                 RefreshGridProgrammed();
                 ReloadNames();
+                ReloadDelete();
 
                 if (resultmail)
                 {
@@ -638,6 +686,7 @@ namespace Transport_Weekend
                         RefreshGridAll();
                         RefreshGridProgrammed();
                         ReloadNames();
+                        ReloadDelete();
                         SelectDay.SelectedIndex = 0;
                         SelectName.SelectedIndex = 0;
                         SelectShift.SelectedIndex = 0;
@@ -660,6 +709,7 @@ namespace Transport_Weekend
                         RefreshGridAll();
                         RefreshGridProgrammed();
                         ReloadNames();
+                        ReloadDelete();
                         SelectDay.SelectedIndex = 0;
                         SelectName.SelectedIndex = 0;
                         SelectShift.SelectedIndex = 0;
@@ -681,6 +731,96 @@ namespace Transport_Weekend
             }
         }
 
+        protected void btnScheduleALL_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnDeleteOne_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                string loggedinID = Request.Cookies["userdata"].Value;
+                GetUserName getUserName = new GetUserName();
+                string loggedin = getUserName.GetName(loggedinID);
+
+                Database databaseObject = new Database();
+
+
+                string name = SelectDel.Value;
+                string AvailableSaturday = "";
+                string AvailableSunday = "";
+                string ShiftSaturday = "";
+                string ShiftSunday = "";
+
+                
+
+                    string verif = "SELECT AvailableSaturday,AvailableSunday,ShiftSaturday,ShiftSunday from Employees WHERE NameandSurname=@NameandSurname";
+                    SqlCommand cmdverif = new SqlCommand(verif, databaseObject.myConnection);
+                    cmdverif.Parameters.AddWithValue("@NameandSurname", name);
+
+                    databaseObject.OpenConnection();
+                    SqlDataReader reader = cmdverif.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            AvailableSaturday = reader[0].ToString();
+                            AvailableSunday = reader[1].ToString();
+                            ShiftSaturday = reader[2].ToString();
+                            ShiftSunday = reader[3].ToString();
+                        }
+
+                    }
+                    databaseObject.CloseConnection();
+
+                    if (AvailableSaturday != "BUSY")
+                    {
+                        AvailableSaturday = "AVAILABLE";
+                        ShiftSaturday = "NONE";
+
+                    }
+
+                    if (AvailableSunday != "BUSY")
+                    {
+                        AvailableSunday = "AVAILABLE";
+                        ShiftSunday = "NONE";
+
+                    }
+
+                    string queryup = "UPDATE Employees SET AvailableSaturday=@AvailableSaturday, AvailableSunday=@AvailableSunday, " +
+                        "ShiftSaturday=@ShiftSaturday, ShiftSunday=@ShiftSunday WHERE NameandSurname=@NameandSurname ";
+                    SqlCommand comup = new SqlCommand(queryup, databaseObject.myConnection);
+                    comup.Parameters.AddWithValue("@NameandSurname", name);
+                    comup.Parameters.AddWithValue("@AvailableSaturday", AvailableSaturday);
+                    comup.Parameters.AddWithValue("@AvailableSunday", AvailableSunday);
+                    comup.Parameters.AddWithValue("@ShiftSaturday", ShiftSaturday);
+                    comup.Parameters.AddWithValue("@ShiftSunday", ShiftSunday);
+
+                    databaseObject.OpenConnection();
+                    var res = comup.ExecuteNonQuery();
+                    databaseObject.CloseConnection();
+
+                
+
+
+
+                DeleteOne();
+                RefreshGridAll();
+                RefreshGridProgrammed();
+                ReloadNames();
+                ReloadDelete();
+                MsgBox("Deleted Schedule Succesfully", this.Page, this);
+
+
+            }
+            catch (Exception ex)
+            {
+                MsgBox(ex.ToString(), this.Page, this);
+            }
+
+        }
         public void MsgBox(String ex, Page pg, Object obj)
         {
             string s = "<SCRIPT language='javascript'>alert('" + ex.Replace("\r\n", "\\n").Replace("'", "") + "'); </SCRIPT>";

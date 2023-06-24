@@ -69,6 +69,51 @@ namespace Transport_Weekend
         protected global::System.Web.UI.WebControls.Button buttonSchedule;
 
         /// <summary>
+        /// SelectDayALL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect SelectDayALL;
+
+        /// <summary>
+        /// SelectShiftALL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect SelectShiftALL;
+
+        /// <summary>
+        /// buttonScheduleALL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button buttonScheduleALL;
+
+        /// <summary>
+        /// SelectDel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect SelectDel;
+
+        /// <summary>
+        /// buttonDeleteOne control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button buttonDeleteOne;
+
+        /// <summary>
         /// buttonSend control.
         /// </summary>
         /// <remarks>

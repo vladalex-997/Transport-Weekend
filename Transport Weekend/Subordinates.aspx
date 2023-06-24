@@ -35,9 +35,15 @@
 
     </div>
 
-     <div class="col-12 d-flex justify-content-between my-5">
+      <div class="row mt-5 mb-2">
+        <div class="col-4 offset-0">
+           <h3>Schedule One Employee</h3>
+        </div>
+    </div>
+
+     <div class="col-12 d-flex justify-content-between mb-5">
          <div>
-            <select class="form-select fs-5"  aria-describedby="Name" id="SelectName" runat="server" style="width:300px;" >
+            <select class="form-select fs-5"  aria-describedby="Name" id="SelectName" runat="server" style="width:400px;" >
                 <option selected value="">Open select</option>
               <%--  <option value="ACTIVE">Active</option>
                 <option value="INACTIVE">Inactive</option>--%>
@@ -73,12 +79,62 @@
 
      </div>
 
+     <div class="row mt-5 mb-2">
+        <div class="col-4 offset-0">
+           <h3>Schedule All Employees</h3>
+        </div>
+    </div>
+   
+
+    <div class="col-12 d-flex justify-content-between mb-5">
+     
+         <div>
+            <select class="form-select fs-5 " aria-describedby="DayALL" id="SelectDayALL" style="width:400px;" runat="server">
+                <option selected value="">Open select</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+
+            </select>
+              <span id="DayALL" class="form-text fs-5 mt-5 ms-2">Select Day.</span>
+        </div>
+         <div>
+            <select class="form-select fs-5" aria-describedby="ShiftALL" id="SelectShiftALL" style="width:400px;" runat="server">
+                <option selected value="">Open select</option>
+                <option value="SHIFT 1">Shift 1</option>
+                <option value="SHIFT 2">Shift 2</option>
+                <option value="SHIFT 3">Shift 3</option>
+
+            </select>
+
+              <span id="ShiftALL" class="form-text fs-5 mt-5 ms-2">Select Shift.</span>
+        </div>
+
+          <asp:Button Text="Schedule All Employees" ID="buttonScheduleALL" CssClass="btn btn-danger fs-4 mb-3" Width="300px" runat="server" OnClick="btnScheduleALL_Click" />
+
+
+     </div>
+
 
        <div style="height: 30px"></div>
     <div class="col-12 d-flex justify-content-between my-5">
         <h1>Programmed Subordinates </h1>
        
 
+    </div>
+
+    <div class="row mt-4 mb-2">
+        <div class="col-4 offset-0">
+            <select class="form-select fs-5"  aria-describedby="NameDel" id="SelectDel" runat="server" style="width:400px;" >
+                <option selected value="">Open select</option>
+            
+
+            </select>
+            <span id="NameDel" class="form-text fs-5 mt-5 ms-2">Select Employee Name to Delete.</span>
+        </div>
+        <div class="col-3 offset-0">
+             <asp:Button Text="Delete Selected Employee" ID="buttonDeleteOne" CssClass="btn btn-danger fs-5 mb-3" Width="300px" runat="server" OnClick="btnDeleteOne_Click" />
+
+        </div>
     </div>
 
   
