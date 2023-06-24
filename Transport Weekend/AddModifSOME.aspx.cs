@@ -77,7 +77,7 @@ namespace Transport_Weekend
                 string UserStatus = SelectStatusAdd.Value;
                 string Superior = loggedin;
                 string EmployeeRoute = SelectRouteAdd.Value;
-                bool verif = (string.IsNullOrEmpty(Id) || string.IsNullOrEmpty(Company) || string.IsNullOrEmpty(CNP) || string.IsNullOrEmpty(CostCenter) || string.IsNullOrEmpty(CostCenterName) || string.IsNullOrEmpty(FullName) || string.IsNullOrEmpty(Department) || string.IsNullOrEmpty(Phone) || string.IsNullOrEmpty(HomeAddress) || string.IsNullOrEmpty(UserStatus) ||  string.IsNullOrEmpty(Superior) || string.IsNullOrEmpty(EmployeeRoute));
+                bool verif = (string.IsNullOrEmpty(Id) || string.IsNullOrEmpty(Company) || string.IsNullOrEmpty(FullName) || string.IsNullOrEmpty(Department) || string.IsNullOrEmpty(UserStatus) ||  string.IsNullOrEmpty(Superior) || string.IsNullOrEmpty(EmployeeRoute));
 
                 if (verif == false)
                 {
@@ -164,7 +164,7 @@ namespace Transport_Weekend
                     string SundayStatus = SelectSundayMod.Value;
                     string SaturdayShift = SelectSaturdayShiftMod.Value;
                     string SundayShift = SelectSaturdayShiftMod.Value;
-                    bool verif = (string.IsNullOrEmpty(Company) || string.IsNullOrEmpty(CNP) || string.IsNullOrEmpty(Id) || string.IsNullOrEmpty(CostCenter) || string.IsNullOrEmpty(CostCenterName) || string.IsNullOrEmpty(FullName) || string.IsNullOrEmpty(Department) || string.IsNullOrEmpty(Phone) || string.IsNullOrEmpty(HomeAddress) || string.IsNullOrEmpty(UserStatus) || string.IsNullOrEmpty(EmployeeRoute) || string.IsNullOrEmpty(SaturdaySatus) || string.IsNullOrEmpty(SaturdaySatus) || string.IsNullOrEmpty(SaturdayShift) || string.IsNullOrEmpty(SaturdayShift));
+                    bool verif = (string.IsNullOrEmpty(Id) || string.IsNullOrEmpty(Company) || string.IsNullOrEmpty(FullName) || string.IsNullOrEmpty(Department) || string.IsNullOrEmpty(UserStatus) || string.IsNullOrEmpty(EmployeeRoute) || string.IsNullOrEmpty(SaturdaySatus) || string.IsNullOrEmpty(SaturdaySatus) || string.IsNullOrEmpty(SaturdayShift) || string.IsNullOrEmpty(SaturdayShift));
                     if (verif == false)
                     {
                         string queryup = "UPDATE Employees SET Company = @Company, CNP = @CNP, CostCentre = @CostCentre," +
@@ -250,49 +250,60 @@ namespace Transport_Weekend
                 string SaturdayShift = "";
                 string SundayShift = "";
 
-                string queryauto = "SELECT Company,CNP,CostCentre,CostCentreName,NameandSurname,Deparment,Phone,HomeAddress,UserStatus,EmployeeRoute,AvailableSaturday,AvailableSunday,ShiftSaturday,ShiftSunday from Employees WHERE SAPid=@UniqueId";
-                SqlCommand cmd = new SqlCommand(queryauto, databaseObject.myConnection);
-                cmd.Parameters.AddWithValue("@Uniqueid", Id);
-                databaseObject.OpenConnection();
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.HasRows)
+                if(string.IsNullOrEmpty(Id))
+                {
+                    MsgBox("Complete Id for autocomplete !!!", this.Page, this);
+                }
+                else
                 {
 
-                    while (reader.Read())
+                    string queryauto = "SELECT Company,CNP,CostCentre,CostCentreName,NameandSurname,Deparment,Phone,HomeAddress,UserStatus,EmployeeRoute,AvailableSaturday,AvailableSunday,ShiftSaturday,ShiftSunday from Employees WHERE SAPid=@UniqueId";
+                    SqlCommand cmd = new SqlCommand(queryauto, databaseObject.myConnection);
+                    cmd.Parameters.AddWithValue("@Uniqueid", Id);
+                    databaseObject.OpenConnection();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
                     {
-                        Company = reader[0].ToString();
-                        CNP = reader[1].ToString();
-                        CostCenter = reader[2].ToString();
-                        CostCenterName = reader[3].ToString();
-                        FullName = reader[4].ToString();
-                        Department = reader[5].ToString();
-                        Phone = reader[6].ToString();
-                        HomeAddress = reader[7].ToString();
-                        UserStatus = reader[8].ToString();
-                        EmployeeRoute = reader[9].ToString();
-                        SaturdayStatus = reader[10].ToString();
-                        SundayStatus = reader[11].ToString();
-                        SaturdayShift = reader[12].ToString();
-                        SundayShift = reader[13].ToString();
-                    }
-                }
-                reader.Close();
-                databaseObject.CloseConnection();
 
-                SelectCompanyMod.Value = Company;
-                inputCNPMod.Value = CNP;
-                inputCostCenterMod.Value = CostCenter;
-                inputCostCenterNameMod.Value = CostCenterName;
-                inputNameSurnameMod.Value = FullName;
-                inputDepartmentMod.Value = Department;
-                inputPhoneMod.Value = Phone;
-                inputHomeAddressMod.Value = HomeAddress;
-                SelectStatusMod.Value = UserStatus;
-                SelectRouteMod.Value = EmployeeRoute;
-                SelectSaturdayMod.Value = SaturdayStatus;
-                SelectSundayMod.Value = SundayStatus;
-                SelectSaturdayShiftMod.Value = SaturdayShift;
-                SelectSundayShiftMod.Value = SundayShift;
+                        while (reader.Read())
+                        {
+                            Company = reader[0].ToString();
+                            CNP = reader[1].ToString();
+                            CostCenter = reader[2].ToString();
+                            CostCenterName = reader[3].ToString();
+                            FullName = reader[4].ToString();
+                            Department = reader[5].ToString();
+                            Phone = reader[6].ToString();
+                            HomeAddress = reader[7].ToString();
+                            UserStatus = reader[8].ToString();
+                            EmployeeRoute = reader[9].ToString();
+                            SaturdayStatus = reader[10].ToString();
+                            SundayStatus = reader[11].ToString();
+                            SaturdayShift = reader[12].ToString();
+                            SundayShift = reader[13].ToString();
+                        }
+                    }
+                    reader.Close();
+                    databaseObject.CloseConnection();
+
+                    SelectCompanyMod.Value = Company;
+                    inputCNPMod.Value = CNP;
+                    inputCostCenterMod.Value = CostCenter;
+                    inputCostCenterNameMod.Value = CostCenterName;
+                    inputNameSurnameMod.Value = FullName;
+                    inputDepartmentMod.Value = Department;
+                    inputPhoneMod.Value = Phone;
+                    inputHomeAddressMod.Value = HomeAddress;
+                    SelectStatusMod.Value = UserStatus;
+                    SelectRouteMod.Value = EmployeeRoute;
+                    SelectSaturdayMod.Value = SaturdayStatus;
+                    SelectSundayMod.Value = SundayStatus;
+                    SelectSaturdayShiftMod.Value = SaturdayShift;
+                    SelectSundayShiftMod.Value = SundayShift;
+
+                }
+
+               
             }
             catch (Exception ex)
             {

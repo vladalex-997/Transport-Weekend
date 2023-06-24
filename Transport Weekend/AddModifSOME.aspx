@@ -18,7 +18,7 @@
      <%-- SAP ID --%>
     <div class="row mt-5 mb-4 align-items-center">
         <div class="col-1 offset-0 me-4">
-            <label for="inputIdAdd" class="col-form-label fs-5">SAP ID:</label>
+            <label for="inputIdAdd" class="col-form-label">* SAP ID:</label>
         </div>
         <div class="col-2 offset-0">
             <input type="text" id="inputIdAdd" class="form-control fs-5" aria-describedby="idHelpInlineAdd" runat="server" placeholder="Enter SAP ID">
@@ -26,7 +26,7 @@
         
 
         <div class="col-1 offset-3 me-4">
-            <label for="inputIdMod" class="col-form-label fs-5">SAP ID:</label>
+            <label for="inputIdMod" class="col-form-label">* SAP ID:</label>
         </div>
         <div class="col-2 offset-0">
             <input type="text" id="inputIdMod" class="form-control fs-5" aria-describedby="idHelpInlineMod" runat="server" placeholder="Enter SAP ID">
@@ -41,7 +41,7 @@
     <%-- CNP --%>
     <div class="row mt-5 mb-4 align-items-center">
         <div class="col-1 offset-0 me-4">
-            <label for="inputCPNAdd" class="col-form-label fs-5">CNP:</label>
+            <label for="inputCPNAdd" class="col-form-label">CNP:</label>
         </div>
 
         <div class="col-2 offset-0">
@@ -51,7 +51,7 @@
         
 
         <div class="col-1 offset-3 me-4">
-            <label for="inputCNPMod" class="col-form-label fs-5">CNP:</label>
+            <label for="inputCNPMod" class="col-form-label">CNP:</label>
         </div>
 
         <div class="col-2 offset-0">
@@ -67,7 +67,7 @@
     <%-- Company --%>
     <div class="row mt-5 mb-4 align-items-center">
         <div class="col-1 offset-0 me-4 ">
-            <label class="col-form-label fs-5">Company:</label>
+            <label class="col-form-label">* Company:</label>
         </div>
         <div class="col-2 offset-0">
             <select class="form-select fs-5" aria-label="Select User Company" aria-describedby="CompanyHelpInlineAdd" id="SelectCompanyAdd" runat="server">
@@ -80,7 +80,7 @@
 
 
         <div class="col-1 offset-3 me-4">
-            <label class="col-form-label fs-5">Company:</label>
+            <label class="col-form-label">* Company:</label>
         </div>
         <div class="col-2 offset-0">
             <select class="form-select fs-5" aria-label="Select User Company" aria-describedby="CompanyHelpInlineMod" id="SelectCompanyMod" runat="server">
@@ -98,14 +98,14 @@
     <%-- COST CENTER --%>
     <div class="row mt-5 mb-4 align-items-center">
         <div class="col-1 offset-0 me-4 ">
-            <label for="inputCostCenterAdd" class="col-form-label fs-5">CostCenter:</label>
+            <label for="inputCostCenterAdd" class="col-form-label">CostCenter:</label>
         </div>
         <div class="col-2">
             <input type="text" id="inputCostCenterAdd" class="form-control fs-5" aria-describedby="costCenterHelpInlineAdd" runat="server" placeholder="Enter Cost Center">
         </div>
 
         <div class="col-1 offset-3 me-4">
-            <label for="inputCostCenterMod" class="col-form-label fs-5">CostCenter:</label>
+            <label for="inputCostCenterMod" class="col-form-label">CostCenter:</label>
         </div>
         <div class="col-2 offset-0">
             <input type="text" id="inputCostCenterMod" class="form-control fs-5" aria-describedby="inputCostCenterMod" runat="server" placeholder="Enter Cost Center">
@@ -115,14 +115,14 @@
     <%-- Cost Center Name --%>
     <div class="row mt-5 mb-4 align-items-center">
         <div class="col-1 offset-0 me-4 ">
-            <label for="inputCostCenterNameAdd" class="col-form-label fs-5">CenterName:</label>
+            <label for="inputCostCenterNameAdd" class="col-form-label">CenterName:</label>
         </div>
         <div class="col-2 offset-0">
             <input type="text" id="inputCostCenterNameAdd" class="form-control fs-5" aria-describedby="costCenterNameHelpInlineAdd" runat="server" placeholder="Enter Center Name">
         </div>
 
         <div class="col-1 offset-3 me-4">
-            <label for="inputCostCenterNameMod" class="col-form-label fs-5">CenterName:</label>
+            <label for="inputCostCenterNameMod" class="col-form-label">CenterName:</label>
         </div>
         <div class="col-2 offset-0">
             <input type="text" id="inputCostCenterNameMod" class="form-control fs-5" aria-describedby="inputCostCenterNameMod" runat="server" placeholder="Enter Center Name">
@@ -132,14 +132,14 @@
     <%-- Name and Surname --%>
     <div class="row mt-5 mb-4 align-items-center">
         <div class="col-1 offset-0 me-4 ">
-            <label for="inputNameSurnameAdd" class="col-form-label fs-5">FullName:</label>
+            <label for="inputNameSurnameAdd" class="col-form-label">* FullName:</label>
         </div>
         <div class="col-2">
             <input type="text" id="inputNameSurnameAdd" class="form-control fs-5" aria-describedby="nameSurnameHelpInlineAdd" runat="server" placeholder="Enter Full Name">
         </div>
 
         <div class="col-1 offset-3 me-4">
-            <label for="inputNameSurnameMod" class="col-form-label fs-5">FullName:</label>
+            <label for="inputNameSurnameMod" class="col-form-label">* FullName:</label>
         </div>
         <div class="col-2">
             <input type="text" id="inputNameSurnameMod" class="form-control fs-5" aria-describedby="inputNameSurnameMod" runat="server" placeholder="Enter Full Name">
@@ -149,14 +149,14 @@
     <%-- Department --%>
     <div class="row mt-5 mb-4 align-items-center">
         <div class="col-1 offset-0 me-4 ">
-            <label for="inputDepartmentAdd" class="col-form-label fs-5">Department:</label>
+            <label for="inputDepartmentAdd" class="col-form-label">*Department:</label>
         </div>
         <div class="col-2">
             <input type="text" id="inputDepartmentAdd" class="form-control fs-5" aria-describedby="departmentHelpInlineAdd" runat="server" placeholder="Enter Department">
         </div>
 
         <div class="col-1 offset-3 me-4 ">
-            <label for="inputDepartmentMod" class="col-form-label fs-5">Department:</label>
+            <label for="inputDepartmentMod" class="col-form-label">*Department:</label>
         </div>
         <div class="col-2">
             <input type="text" id="inputDepartmentMod" class="form-control fs-5" aria-describedby="inputDepartmentMod" runat="server" placeholder="Enter Department">
@@ -166,14 +166,14 @@
     <%-- Phone --%>
     <div class="row mt-5 mb-4 align-items-center">
         <div class="col-1 offset-0 me-4 ">
-            <label for="inputPhoneAdd" class="col-form-label fs-5">Phone:</label>
+            <label for="inputPhoneAdd" class="col-form-label">Phone:</label>
         </div>
         <div class="col-2">
             <input type="text" id="inputPhoneAdd" class="form-control fs-5" aria-describedby="phoneHelpInlineAdd" runat="server" placeholder="Enter Phone">
         </div>
 
         <div class="col-1 offset-3 me-4 ">
-            <label for="inputPhoneMod" class="col-form-label fs-5">Phone:</label>
+            <label for="inputPhoneMod" class="col-form-label">Phone:</label>
         </div>
         <div class="col-2">
             <input type="text" id="inputPhoneMod" class="form-control fs-5" aria-describedby="inputPhoneMod" runat="server" placeholder="Enter Phone">
@@ -183,14 +183,14 @@
     <%-- HomeAddress --%>
     <div class="row mt-5 mb-4 align-items-center">
         <div class="col-1 offset-0 me-4 ">
-            <label for="inputHomeAddressAdd" class="col-form-label fs-5">Address:</label>
+            <label for="inputHomeAddressAdd" class="col-form-label">Address:</label>
         </div>
         <div class="col-2">
             <input type="text" id="inputHomeAddressAdd" class="form-control fs-5" aria-describedby="homeAddressHelpInlineAdd" runat="server" placeholder="Enter Address">
         </div>
 
         <div class="col-1 offset-3 me-4 ">
-            <label for="inputHomeAddressMod" class="col-form-label fs-5">Address:</label>
+            <label for="inputHomeAddressMod" class="col-form-label">Address:</label>
         </div>
         <div class="col-2">
             <input type="text" id="inputHomeAddressMod" class="form-control fs-5" aria-describedby="inputHomeAddressMod" runat="server" placeholder="Enter Address">
@@ -200,7 +200,7 @@
     <%-- UserStatus --%>
     <div class="row mt-5 mb-4 align-items-center">
         <div class="col-1 offset-0 me-4 ">
-            <label class="col-form-label fs-5">User Stat:</label>
+            <label class="col-form-label">* User Stat:</label>
         </div>
         <div class="col-2 offset-0">
             <select class="form-select fs-5" aria-label="Select User Status" aria-describedby="StatusHelpInlineAdd" id="SelectStatusAdd" runat="server">
@@ -212,7 +212,7 @@
         </div>
 
         <div class="col-1 offset-3 me-4 ">
-            <label class="col-form-label fs-5">User Stat:</label>
+            <label class="col-form-label">* User Stat:</label>
         </div>
         <div class="col-2 offset-0">
             <select class="form-select fs-5" aria-label="Select User Status" aria-describedby="StatusHelpInlineMod" id="SelectStatusMod" runat="server">
@@ -228,7 +228,7 @@
     <%-- EmployeeRoute --%>
     <div class="row mt-5 mb-4 align-items-center">
         <div class="col-1 offset-0 me-4 ">
-            <label class="col-form-label fs-5">Route:</label>
+            <label class="col-form-label">* Route:</label>
         </div>
         <div class="col-2 offset-0">
             <select class="form-select fs-5" aria-label="Select User Route" aria-describedby="RouteHelpInlineAdd" id="SelectRouteAdd" runat="server">
@@ -240,7 +240,7 @@
         </div>
 
         <div class="col-1 offset-3 me-4 ">
-            <label class="col-form-label fs-5">Route:</label>
+            <label class="col-form-label">* Route:</label>
         </div>
         <div class="col-2 offset-0">
             <select class="form-select fs-5" aria-label="Select User Route" aria-describedby="RouteHelpInlineMod" id="SelectRouteMod" runat="server">
@@ -260,7 +260,7 @@
             <asp:Button Text="Add Employee" ID="btnAdd" CssClass="btn btn-primary fs-4" Width="200px" runat="server" OnClick="btnAdd_Click" />
         </div>
         <div class="col-1 offset-3 me-4 ">
-            <label class="col-form-label fs-5">Saturday:</label>
+            <label class="col-form-label">* Saturday:</label>
         </div>
         <div class="col-2 offset-0">
             <select class="form-select fs-5" aria-label="Select Saturday Status" aria-describedby="StatusHelpInlineMod" id="SelectSaturdayMod" runat="server">
@@ -278,7 +278,7 @@
         <div class="col-1 offset-0 me-4 ">
         </div>
         <div class="col-1 offset-5 me-4 ">
-            <label class="col-form-label fs-5">Sunday:</label>
+            <label class="col-form-label">* Sunday:</label>
         </div>
         <div class="col-2 offset-0">
             <select class="form-select fs-5" aria-label="Select Saturday Status" aria-describedby="StatusHelpInlineMod" id="SelectSundayMod" runat="server">
@@ -296,7 +296,7 @@
         <div class="col-1 offset-0 me-4 ">
         </div>
         <div class="col-1 offset-5 me-4 ">
-            <label class="col-form-label fs-5">SaturdayShift:</label>
+            <label class="col-form-label">*SaturdayShift:</label>
         </div>
         <div class="col-2 offset-0">
             <select class="form-select fs-5" aria-label="Select Saturday Status" aria-describedby="StatusHelpInlineMod" id="SelectSaturdayShiftMod" runat="server">
@@ -315,7 +315,7 @@
         <div class="col-1 offset-0 me-4 ">
         </div>
         <div class="col-1 offset-5 me-4 ">
-            <label class="col-form-label fs-5">SundayShift:</label>
+            <label class="col-form-label ">*SundayShift:</label>
         </div>
         <div class="col-2 offset-0">
             <select class="form-select fs-5" aria-label="Select Sunday Status" aria-describedby="StatusHelpInlineMod" id="SelectSundayShiftMod" runat="server">
