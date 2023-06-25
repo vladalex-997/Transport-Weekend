@@ -525,6 +525,7 @@ namespace Transport_Weekend
                 string Text;
                 string Emailget;
                 string Emailsend;
+                //trebuie modificat mail sa citeasca din baza
 
                 Subiect = "Weekend Transport Confirmation";
                 Text = getHtml(dttable);
@@ -733,7 +734,205 @@ namespace Transport_Weekend
 
         protected void btnScheduleALL_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string ShiftAll = SelectShiftALL.Value;
+                string DayAll=SelectDayALL.Value;
 
+                var expr = (string.IsNullOrEmpty(ShiftAll) || string.IsNullOrEmpty(DayAll));
+
+                if (expr == false)
+                {
+                    string loggedinID = Request.Cookies["userdata"].Value;
+                    GetUserName getUserName = new GetUserName();
+                    string loggedin = getUserName.GetName(loggedinID);
+
+                    Database databaseObject = new Database();
+
+
+
+
+
+                    string query = "SELECT NameandSurname from Employees WHERE Superior=@Superior";
+                    SqlCommand myquerytab = new SqlCommand(query, databaseObject.myConnection);
+                    myquerytab.Parameters.AddWithValue("@Superior", loggedin);
+                    databaseObject.OpenConnection();
+                    SqlDataAdapter daquery = new SqlDataAdapter(myquerytab);
+                    DataTable dt = new DataTable();
+                    daquery.Fill(dt);
+                    var listtemporary = dt.AsEnumerable().Select(r => r.Field<string>("NameandSurname")).ToList();
+                    databaseObject.CloseConnection();
+                   
+                    foreach (string name in listtemporary)
+                    {
+
+                        string Id = "";
+                        string Company = "";
+                        string CNP = "";
+                        string CostCenter = "";
+                        string CostCenterName = "";
+                        string FullName = name;
+                        string Department = "";
+                        string Phone = "";
+                        string HomeAddress = "";
+                        string UserStatus = "";
+                        string Superior = "";
+                        string EmployeeRoute = "";
+                        string SaturdayStatus = "";
+                        string SundayStatus = "";
+                        string SaturdayShift = "";
+                        string SundayShift = "";
+
+
+                        string queryauto = "SELECT Company,CNP,SAPid,CostCentre,CostCentreName,Deparment,Phone,HomeAddress,UserStatus,Superior,EmployeeRoute,AvailableSaturday,AvailableSunday,ShiftSaturday,ShiftSunday from Employees WHERE NameandSurname=@NameandSurname";
+                        SqlCommand cmd = new SqlCommand(queryauto, databaseObject.myConnection);
+                        cmd.Parameters.AddWithValue("@NameandSurname", name);
+                        databaseObject.OpenConnection();
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+
+                            while (reader.Read())
+                            {
+                                Company = reader[0].ToString();
+                                CNP = reader[1].ToString();
+                                Id = reader[2].ToString();
+                                CostCenter = reader[3].ToString();
+                                CostCenterName = reader[4].ToString();
+                                Department = reader[5].ToString();
+                                Phone = reader[6].ToString();
+                                HomeAddress = reader[7].ToString();
+                                UserStatus = reader[8].ToString();
+                                Superior = reader[9].ToString();
+                                EmployeeRoute = reader[10].ToString();
+                                SaturdayStatus = reader[11].ToString();
+                                SundayStatus = reader[12].ToString();
+                                SaturdayShift = reader[13].ToString();
+                                SundayShift = reader[14].ToString();
+                            }
+                        }
+                        reader.Close();
+                        databaseObject.CloseConnection();
+
+
+
+                        if (DayAll == "Saturday")
+                        {
+
+                            SaturdayStatus = "PROGRAMMED";
+                            SaturdayShift = ShiftAll;
+
+                        }
+                        else if (DayAll == "Sunday")
+                        {
+                            SundayStatus = "PROGRAMMED";
+                            SundayShift = ShiftAll;
+                        }
+
+                        string update = "UPDATE Employees SET AvailableSaturday=@SaturdayStatus, ShiftSaturday=@SaturdayShift, AvailableSunday=@SundayStatus, ShiftSunday=@SundayShift WHERE NameandSurname=@NameandSurname ";
+                        SqlCommand cmdup = new SqlCommand(update, databaseObject.myConnection);
+                        cmdup.Parameters.AddWithValue("@SaturdayStatus", SaturdayStatus);
+                        cmdup.Parameters.AddWithValue("@SaturdayShift", SaturdayShift);
+                        cmdup.Parameters.AddWithValue("@SundayStatus", SundayStatus);
+                        cmdup.Parameters.AddWithValue("@SundayShift", SundayShift);
+                        cmdup.Parameters.AddWithValue("@NameandSurname", name);
+
+                        databaseObject.OpenConnection();
+                        var res = cmdup.ExecuteNonQuery();
+                        databaseObject.CloseConnection();
+
+                        string verify = "SELECT * from ScheduleTemporary WHERE NameandSurname=@NameandSurname";
+                        SqlCommand cmdverif = new SqlCommand(verify, databaseObject.myConnection);
+                        cmdverif.Parameters.AddWithValue("@NameandSurname", name);
+
+                        databaseObject.OpenConnection();
+                        var temporary = cmdverif.ExecuteScalar();
+
+                        databaseObject.CloseConnection();
+
+                        if (temporary is null)
+                        {
+                            string queryadd = "INSERT INTO ScheduleTemporary(Company,CNP,SAPid,CostCentre,CostCentreName,NameandSurname,Department,Phone,HomeAddress,UserStatus,Superior,EmployeeRoute,AvailableSaturday,AvailableSunday,ShiftSaturday,ShiftSunday) " +
+                            "VALUES (@Company,@CNP,@SAPid,@CostCentre,@CostCentreName,@NameandSurname,@Deparment,@Phone,@HomeAddress,@UserStatus,@Superior,@EmployeeRoute,@AvailableSaturday,@AvailableSunday,@ShiftSaturday,@ShiftSunday)";
+                            SqlCommand cmdadd = new SqlCommand(queryadd, databaseObject.myConnection);
+                            cmdadd.Parameters.AddWithValue("@Company", Company);
+                            cmdadd.Parameters.AddWithValue("@CNP", CNP);
+                            cmdadd.Parameters.AddWithValue("@SAPid", Id);
+                            cmdadd.Parameters.AddWithValue("@CostCentre", CostCenter);
+                            cmdadd.Parameters.AddWithValue("@CostCentreName", CostCenterName);
+                            cmdadd.Parameters.AddWithValue("@NameandSurname", FullName);
+                            cmdadd.Parameters.AddWithValue("@Deparment", Department);
+                            cmdadd.Parameters.AddWithValue("@Phone", Phone);
+                            cmdadd.Parameters.AddWithValue("@HomeAddress", HomeAddress);
+                            cmdadd.Parameters.AddWithValue("@UserStatus", UserStatus);
+                            cmdadd.Parameters.AddWithValue("@Superior", Superior);
+                            cmdadd.Parameters.AddWithValue("@EmployeeRoute", EmployeeRoute);
+                            cmdadd.Parameters.AddWithValue("@AvailableSaturday", SaturdayStatus);
+                            cmdadd.Parameters.AddWithValue("@ShiftSaturday", SaturdayShift);
+                            cmdadd.Parameters.AddWithValue("@AvailableSunday", SundayStatus);
+                            cmdadd.Parameters.AddWithValue("@ShiftSunday", SundayShift);
+
+                            databaseObject.OpenConnection();
+                            var result = cmdadd.ExecuteNonQuery();
+                            databaseObject.CloseConnection();
+
+                            //MsgBox("Employee Programmed Succesfully !", this.Page, this);
+                            //RefreshGridAll();
+                            //RefreshGridProgrammed();
+                            //ReloadNames();
+                            //ReloadDelete();
+                            //SelectDay.SelectedIndex = 0;
+                            //SelectName.SelectedIndex = 0;
+                            //SelectShift.SelectedIndex = 0;
+                        }
+                        else
+                        {
+                            string updatetem = "UPDATE ScheduleTemporary SET AvailableSaturday=@SaturdayStatus, ShiftSaturday=@SaturdayShift, AvailableSunday=@SundayStatus, ShiftSunday=@SundayShift WHERE NameandSurname=@NameandSurname ";
+                            SqlCommand cmduptem = new SqlCommand(updatetem, databaseObject.myConnection);
+                            cmduptem.Parameters.AddWithValue("@SaturdayStatus", SaturdayStatus);
+                            cmduptem.Parameters.AddWithValue("@SaturdayShift", SaturdayShift);
+                            cmduptem.Parameters.AddWithValue("@SundayStatus", SundayStatus);
+                            cmduptem.Parameters.AddWithValue("@SundayShift", SundayShift);
+                            cmduptem.Parameters.AddWithValue("@NameandSurname", name);
+
+                            databaseObject.OpenConnection();
+                            var restem = cmduptem.ExecuteNonQuery();
+                            databaseObject.CloseConnection();
+
+                            //MsgBox("Employee Programmed Succesfully !", this.Page, this);
+                            //RefreshGridAll();
+                            //RefreshGridProgrammed();
+                            //ReloadNames();
+                            //ReloadDelete();
+                            //SelectDay.SelectedIndex = 0;
+                            //SelectName.SelectedIndex = 0;
+                            //SelectShift.SelectedIndex = 0;
+                        }
+
+                    }
+
+
+                    MsgBox("Employees Programmed Succesfully !", this.Page, this);
+                    RefreshGridAll();
+                    RefreshGridProgrammed();
+                    ReloadNames();
+                    ReloadDelete();
+                    SelectDay.SelectedIndex = 0;
+                    SelectName.SelectedIndex = 0;
+                    SelectShift.SelectedIndex = 0;
+
+
+
+                }
+                else
+                {
+                    MsgBox("Complete all fields !!!", this.Page, this);
+                }
+            }
+            catch(Exception ex)
+            {
+                MsgBox(ex.ToString(), this.Page, this);
+            }
         }
 
         protected void btnDeleteOne_Click(object sender, EventArgs e)
