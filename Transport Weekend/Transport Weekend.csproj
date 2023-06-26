@@ -124,6 +124,9 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Images\mfi_logotype.jpg" />
+    <Content Include="ListaEmail.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Logout.aspx" />
     <Content Include="ReportPage.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />

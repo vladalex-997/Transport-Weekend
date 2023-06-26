@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Antlr.Runtime.Misc;
+using System.IO;
 
 namespace Transport_Weekend
 {
@@ -534,7 +535,7 @@ namespace Transport_Weekend
 
                 string Subiect;
                 string Text;
-                string Emailget;
+                string Emailget="";
                 string Emailsend;
                
                 string templogged = "";
@@ -546,7 +547,17 @@ namespace Transport_Weekend
                
                
                 Emailsend = templogged+ ";ovidiu.gionea@marturfompak.com";
-                Emailget = "cristian.nedelea@marturfompak.com;"+"vlad.arsene@marturfompak.com";
+
+                String FilePath;
+                FilePath = Server.MapPath("/ListaEmail.txt");
+                var lines = File.ReadLines(FilePath);
+                foreach (var line in lines)
+                {
+                    Emailget += line + ";";
+                }
+
+
+              //  Emailget = "cristian.nedelea@marturfompak.com;"+"vlad.arsene@marturfompak.com";
 
                 Email ema = new Email();
 
