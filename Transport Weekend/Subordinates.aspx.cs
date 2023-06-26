@@ -521,19 +521,32 @@ namespace Transport_Weekend
 
                 databaseObject.CloseConnection();
 
+
+                string querymail = "SELECT Email from Users WHERE UserNameandSurname=@UserNameandSurname";
+                SqlCommand cmdmail= new SqlCommand(querymail, databaseObject.myConnection);
+                cmdmail.Parameters.AddWithValue("@UserNameandSurname",loggedin);
+
+                databaseObject.OpenConnection();
+                var resultbla=cmdmail.ExecuteScalar();
+                databaseObject.CloseConnection();
+
+
+
                 string Subiect;
                 string Text;
                 string Emailget;
                 string Emailsend;
-                //trebuie modificat mail sa citeasca din baza
-
+               
+                string templogged = "";
                 Subiect = "Weekend Transport Confirmation";
                 Text = getHtml(dttable);
                
-                string templogged = loggedin + "@marturfompak.com;";
+              
+                templogged=resultbla.ToString();
                
-                Emailsend = templogged+ "ovidiu.gionea@marturfompak.com";
-                Emailget = "cristian.nedelea@marturfompak.com";
+               
+                Emailsend = templogged+ ";ovidiu.gionea@marturfompak.com";
+                Emailget = "cristian.nedelea@marturfompak.com;"+"vlad.arsene@marturfompak.com";
 
                 Email ema = new Email();
 

@@ -109,7 +109,7 @@
               <span id="ShiftALL" class="form-text fs-5 mt-5 ms-2">Select Shift.</span>
         </div>
 
-          <asp:Button Text="Schedule All Employees" ID="buttonScheduleALL" CssClass="btn btn-danger fs-4 mb-3" Width="300px" runat="server" OnClick="btnScheduleALL_Click" />
+          <asp:Button Text="Schedule All Employees" ID="buttonScheduleALL" CssClass="btn btn-warning fs-4 mb-3" Width="300px" runat="server" OnClick="btnScheduleALL_Click" />
 
 
      </div>
