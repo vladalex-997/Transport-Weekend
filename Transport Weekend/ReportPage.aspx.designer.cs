@@ -94,5 +94,32 @@ namespace Transport_Weekend
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewRaport;
+
+        /// <summary>
+        /// buttonDeleteTemporary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button buttonDeleteTemporary;
+
+        /// <summary>
+        /// buttonDeleteDefinitive control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button buttonDeleteDefinitive;
+
+        /// <summary>
+        /// buttonResetUsers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button buttonResetUsers;
     }
 }

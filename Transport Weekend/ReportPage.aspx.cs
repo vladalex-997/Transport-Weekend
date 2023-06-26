@@ -54,6 +54,73 @@ namespace Transport_Weekend
             SelectRouteSearch.Value = "Open Select";
         }
 
+        protected void btnResetUsers_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string available = "AVAILABLE";
+                string shift = "NONE";
+
+                Database databaseObject = new Database();
+                string query = "UPDATE Employees SET AvailableSaturday=@AvailableSaturday, AvailableSunday=@AvailableSunday, ShiftSaturday=@ShiftSaturday, ShiftSunday=@ShiftSunday";
+                SqlCommand upd = new SqlCommand(query,databaseObject.myConnection);
+                upd.Parameters.AddWithValue("@AvailableSaturday",available);
+                upd.Parameters.AddWithValue("@AvailableSunday",available);
+                upd.Parameters.AddWithValue("@ShiftSaturday",shift);
+                upd.Parameters.AddWithValue("@ShiftSunday",shift);
+
+                databaseObject.OpenConnection();
+                var result = upd.ExecuteNonQuery();
+                databaseObject.CloseConnection();
+
+                MsgBox("Reset Users Successful", this.Page, this);
+            }
+            catch(Exception ex)
+            {
+                MsgBox(ex.ToString(), this.Page, this);
+            }
+        }
+
+        protected void btnDeleteTemporary_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Database databaseObject = new Database();
+                string query = "DELETE from ScheduleTemporary";
+                SqlCommand upd = new SqlCommand(query, databaseObject.myConnection);
+               
+                databaseObject.OpenConnection();
+                var result = upd.ExecuteNonQuery();
+                databaseObject.CloseConnection();
+
+                MsgBox("Delete Temporary table success", this.Page, this);
+            }
+            catch (Exception ex)
+            {
+                MsgBox(ex.ToString(), this.Page, this);
+            }
+        }
+
+        protected void btnDeleteDefinitive_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Database databaseObject = new Database();
+                string query = "DELETE from DefinitiveSchedule";
+                SqlCommand upd = new SqlCommand(query, databaseObject.myConnection);
+
+                databaseObject.OpenConnection();
+                var result = upd.ExecuteNonQuery();
+                databaseObject.CloseConnection();
+
+                MsgBox("Delete Temporary table success", this.Page, this);
+            }
+            catch (Exception ex)
+            {
+                MsgBox(ex.ToString(), this.Page, this);
+            }
+        }
+
         public override void VerifyRenderingInServerForm(Control control)
         {
             //required to avoid the run time error "  

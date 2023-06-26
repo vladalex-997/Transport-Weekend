@@ -106,5 +106,20 @@
                 </Columns>
             </asp:GridView>
             </div>
+
+        <div style="height:50px"></div>
+
+        <div class="row">
+
+            <h3>WARNING : SECTION FOR WEEKLY RESET</h3>
+        </div>
+
+         <div class="col-12 d-flex justify-content-between my-5">
+       
+        <asp:Button Text="DELETE TEMPORARY" ID="buttonDeleteTemporary" CssClass="btn btn-danger fs-5" Width="300px" runat="server" OnClick="btnDeleteTemporary_Click" />
+         <asp:Button Text="DELETE DEFINITIVE TABLE" ID="buttonDeleteDefinitive" CssClass="btn btn-danger fs-5" Width="300px" runat="server" OnClick="btnDeleteDefinitive_Click" />
+            <asp:Button Text="RESET USERS" ID="buttonResetUsers" CssClass="btn btn-danger fs-5" Width="300px" runat="server" OnClick="btnResetUsers_Click" />
+
+     </div>
     </div>
 </asp:Content>
