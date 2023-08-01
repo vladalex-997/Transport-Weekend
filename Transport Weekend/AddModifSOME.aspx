@@ -74,6 +74,8 @@
                 <option selected value="">Open select</option>
                 <option value="MARTUR">Martur</option>
                 <option value="FOMPAK">Fompak</option>
+                 <option value="IHM">Ihm</option>
+                <option value="MANPOWER">Manpower</option>
 
             </select>
         </div>
@@ -87,7 +89,8 @@
                 <option selected value="">Open select</option>
                 <option value="MARTUR">Martur</option>
                 <option value="FOMPAK">Fompak</option>
-
+                 <option value="IHM">Ihm</option>
+                <option value="MANPOWER">Manpower</option>
             </select>
         </div>
         
